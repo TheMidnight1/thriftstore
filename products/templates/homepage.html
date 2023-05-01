@@ -1,0 +1,15 @@
+{% extends 'base_site.html' %}{% block maincontent %}
+<h1>Homepage</h1>
+{% for product in products %}
+<div class="product">
+  <h2>{{ product.title }}</h2>
+  <p>Name : {{product.name}}</p>
+  <p>Category: {{ product.category.name }}</p>
+  <p>Condition: {{ product.condition }}</p>
+  <p>User: {{ product.user.username }}</p>
+  <p>Brand: {{ product.brand }}</p>
+  <p>Manufactured Date: {{ product.manufactured_date|default:"N/A" }}</p>
+  <p>Created: {{ product.created_at|date:"F d, Y" }}</p>
+  <button type="submit">Add to cart</button>
+</div>
+{% endfor %} {% endblock maincontent %}
