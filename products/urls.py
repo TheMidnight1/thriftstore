@@ -17,9 +17,19 @@ Including another URLconf
 
 from django.urls import path, include
 from django.contrib import admin
-from .views import HomepageView
+from .views import (
+    HomepageView,
+    PostProduct,
+    ProductDetailView,
+    ProductEditView,
+    ProductDeleteView,
+)
 
 app_name = "products"
 urlpatterns = [
     path("", HomepageView.as_view(), name="homepage"),
+    path("postproduct/", PostProduct.as_view(), name="postproduct"),
+    path("products/<int:pk>/", ProductDetailView.as_view(), name="productdetail"),
+    path("editproducts/<int:pk>/", ProductEditView.as_view(), name="editproduct"),
+    path("deleteproduct/<int:pk>/", ProductDeleteView.as_view(), name="deleteproduct"),
 ]

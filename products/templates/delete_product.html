@@ -1,0 +1,12 @@
+{% extends "base_nav.html" %} {% block maincontent %}
+<h1>Delete Product</h1>
+<p>Are you sure you want to delete "{{ object.name }}"?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Yes, delete it." class="btn btn-danger" />
+  <a href="{% url 'useraccount:userprofile' %}" class="btn btn-secondary"
+    >No, cancel.</a
+  >
+</form>
+{% endblock maincontent%}

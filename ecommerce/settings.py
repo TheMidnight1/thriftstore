@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "useraccount",
     "products",
+    "payment",
     "categories",
+    "rest_framework",
+    "tailwind",
+    "theme",
+    "django_browser_reload",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +56,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "ecommerce.urls"
@@ -133,6 +139,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "mediafiles"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -145,6 +154,12 @@ LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_URL = "logout"
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+TAILWIND_APP_NAME = "theme"
 
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-# EMAIL_HOST = ""
+STRIPE_PUBLIC_KEY_TEST = "pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2"
+STRIPE_SECRET_KEY_TEST = "sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss"
+STRIPE_WEBHOOK_SECRET_TEST = ""
+REDIRECT_DOMAIN = "http://127.0.0.1:8000"

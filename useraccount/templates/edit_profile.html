@@ -1,0 +1,11 @@
+{% extends 'base_nav.html' %} {% block maincontent %}
+
+<h2>Edit Profile</h2>
+<h2>Edit Profile</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Save Changes</button>
+</form>
+<a href="{%url 'useraccount:changepassword'%}">Change Password</a>
+
+{% endblock maincontent %}

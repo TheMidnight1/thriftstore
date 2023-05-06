@@ -1,0 +1,103 @@
+{% extends 'base_nav.html' %} {% block maincontent %}
+
+<div class="mx-auto mt-20 px-4 max-w-screen-lg">
+  <div class="max-w-5xl p-8">
+    <div class="grid grid-cols-3 gap-8">
+      <div class="col-span-1 flex justify-center items-center">
+        <img
+          src="{{ user.image.url }}"
+          alt="Profile Picture"
+          class="rounded-full w-48 h-48 object-cover"
+        />
+      </div>
+      <div class="col-span-1 pr-8 flex flex-col justify-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+          {{ user.first_name }} {{ user.last_name }}
+        </h1>
+        <p class="text-gray-500 mb-4">No reviews yet</p>
+        <div class="flex items-center mb-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 text-gray-700 mr-2"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 3a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm1 1v3h10V4H4zm0 7a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5zm1 1v3h10v-3H4z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <p class="text-gray-700">Nepal</p>
+        </div>
+      </div>
+      <div class="col-span-1 flex justify-center items-center">
+        <a href="{%url 'useraccount:edit_profile'%}">
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Edit Profile
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="flex gap-16">
+    <div>
+      <h3>Items</h3>
+    </div>
+    <div>
+      <h3>Reviews</h3>
+    </div>
+  </div>
+  <hr class="border-gray-300 w-1/1 my-8" />
+
+  <div
+    class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+  >
+    {% for product in products %}
+    <div class="group relative">
+      <div
+        class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-180"
+      >
+        <img
+          src="{{product.product_image.url}}"
+          alt="Front of men's Basic Tee in black."
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div class="mt-4 flex justify-between">
+        <div>
+          <h3 class="text-sm text-gray-700 truncate">
+            <a href="#"> {{product.name}} </a>
+          </h3>
+          <p class="mt-1 text-sm text-gray-500">{{product.category}}</p>
+        </div>
+        <p class="text-sm font-medium text-gray-900">Rs {{product.price}}</p>
+        <p class="text-sm font-medium text-gray-900">Rs {{user.username}}</p>
+      </div>
+      <div class="buttons flex gap-3 mt-4">
+        <div class="edit-btn">
+          <a href="{% url 'products:editproduct' pk=product.pk %}">
+            <button
+              class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
+            >
+              Edit
+            </button>
+          </a>
+        </div>
+        <div class="delete-btn">
+          <button
+            id="open-modal"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Open Modal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  {% comment %} Model of Edit Profile {% endcomment %} {% endblock maincontent%}
+</div>

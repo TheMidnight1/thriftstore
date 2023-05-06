@@ -1,0 +1,87 @@
+{% extends 'base_nav.html' %} {% block maincontent %}
+<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold">Sell your product</h2>
+        <p class="mt-2 text-gray-500">
+          Fill in the form below to add your product to our marketplace
+        </p>
+      </div>
+      <form method="post" enctype="multipart/form-data" class="space-y-8">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label
+              for="category"
+              class="block text-sm font-medium text-gray-700"
+              >Category</label
+            >
+            {{ form.category }}
+          </div>
+          <div>
+            <label
+              for="condition"
+              class="block text-sm font-medium text-gray-700"
+              >Condition</label
+            >
+            {{ form.condition }}
+          </div>
+        </div>
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700"
+            >Product name</label
+          >
+          <div class="mt-1">{{ form.name }}</div>
+        </div>
+        <div>
+          <label for="brand" class="block text-sm font-medium text-gray-700"
+            >Brand (optional)</label
+          >
+          <div class="mt-1">{{ form.brand }}</div>
+        </div>
+        <div>
+          <label
+            for="description"
+            class="block text-sm font-medium text-gray-700"
+            >Description</label
+          >
+          <div class="mt-1">{{ form.description }}</div>
+        </div>
+        <div>
+          <label for="price" class="block text-sm font-medium text-gray-700"
+            >Price</label
+          >
+          <div class="mt-1">{{ form.price }}</div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label
+              for="manufactured_date"
+              class="block text-sm font-medium text-gray-700"
+              >Manufactured date (optional)</label
+            >
+            {{ form.manufactured_date }}
+          </div>
+          <div>
+            <label
+              for="product_image"
+              class="block text-sm font-medium text-gray-700"
+              >Product image (optional)</label
+            >
+            {{ form.product_image }}
+          </div>
+        </div>
+        <div class="pt-5">
+          <button
+            type="submit"
+            class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          >
+            Add product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock maincontent %}

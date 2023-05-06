@@ -4,10 +4,12 @@ from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import RadioSelect, SelectDateWidget
+
 
 # def validate_password(value):
 #     # Check password length
@@ -209,3 +211,28 @@ class LoginForm(AuthenticationForm):
         label=("Password"),
         widget=forms.PasswordInput(attrs={"name": "password", "class": "form-control"}),
     )
+
+
+class EditProfileForm(UserChangeForm):
+    class Meta:
+        model = get_user_model()
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "phone_number",
+            "image",
+        )
+
+
+class ChangePasswordForm(PasswordChangeForm):
+    old_password = forms.CharField(label="Old Password", widget=forms.PasswordInput)
+    new_password1 = forms.CharField(label="New Password", widget=forms.PasswordInput)
+    new_password2 = forms.CharField(
+        label="Confirm New Password", widget=forms.PasswordInput
+    )
+
+    class Meta:
+        model = get_user_model()
+        fields = ("old_password", "new_password1", "new_password2")

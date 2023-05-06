@@ -1,0 +1,32 @@
+{% extends 'base_nav.html' %} {% block maincontent %}
+<div class="py-10">
+  <h1 class="text-3xl font-bold mb-5">Payment History</h1>
+  <div class="overflow-x-auto">
+    <table class="table-auto border-collapse w-full">
+      <thead>
+        <tr class="text-left font-bold">
+          <th class="px-4 py-2">#</th>
+          <th class="px-4 py-2">Product Name</th>
+          <th class="px-4 py-2">Price</th>
+          <th class="px-4 py-2">Time Purchased</th>
+          <th class="px-4 py-2">Seller Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for payment, product_details in payment_details %} 
+        {% for product,seller_username in product_details %}
+        <tr>
+          <td class="border px-4 py-2">
+            {{ forloop.parentloop.counter }}.{{ forloop.counter }}
+          </td>
+          <td class="border px-4 py-2">{{ product.name }}</td>
+          <td class="border px-4 py-2">${{ product.price }}</td>
+          <td class="border px-4 py-2">{{ payment.created_at }}</td>
+          <td class="border px-4 py-2">{{ seller_username }}</td>
+        </tr>
+        {% endfor %} {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
