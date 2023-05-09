@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block content %} {% include 'navigation_bar.html'%}
 
-<div class="p-4 sm:ml-64">
-  <div>{%include 'side_bar.html'%}</div>
+<div class="flex">
+  <div class="w-1/6">{%include 'side_bar.html'%}</div>
 
-  <div>
+  <div class="flex-1">
     {%block maincontent %} {% endblock maincontent %} {%endblock content %}
   </div>
 </div>

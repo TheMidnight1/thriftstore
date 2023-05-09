@@ -1,5 +1,7 @@
-import time
 import stripe
+from datetime import datetime
+from decimal import Decimal
+
 from .models import UserPayment
 from django.conf import settings
 from products.models import Product
@@ -64,19 +66,6 @@ def product_page(request, product_id):
     return render(request, "checkout.html", {"product": product})
 
 
-## use Stripe dummy card: 4242 4242 4242 4242
-# def payment_successful(request):
-#     stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
-#     checkout_session_id = request.GET.get("session_id", None)
-#     session = stripe.checkout.Session.retrieve(checkout_session_id)
-#     customer = stripe.Customer.retrieve(session.customer)
-#     user_payment = UserPayment(
-#         user=request.user, checkout_id=checkout_session_id, is_successful=True
-#     )
-#     user_payment.save()
-#     return render(request, "payment_successful.html", {"customer": customer})
-
-
 @login_required
 def payment_successful(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
@@ -126,23 +115,8 @@ def stripe_webhook(request):
 class PaymentHistoryView(LoginRequiredMixin, ListView):
     model = UserPayment
     template_name = "payment_history.html"
-    context_object_name = "payment_history"
+    context_object_name = "payments"
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(user=self.request.user).order_by("-created_at")
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        payment_history = self.get_queryset()
-        payment_details = []
-        for payment in payment_history:
-            products = payment.products.all()
-            product_details = []
-            for product in products:
-                seller_name = product.seller.username
-                product_details.append((product, seller_name))
-            payment_details.append((payment, product_details))
-        context["payment_details"] = payment_details
-        return context
+        return queryset.filter(user=self.request.user)

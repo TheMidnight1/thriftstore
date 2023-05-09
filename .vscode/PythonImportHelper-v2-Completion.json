@@ -56,6 +56,54 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -336,6 +384,14 @@
         "documentation": {}
     },
     {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "redirect",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -473,6 +529,31 @@
         "documentation": {}
     },
     {
+        "label": "django.conf",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
         "label": "settings",
         "importPath": "django.conf",
         "description": "django.conf",
@@ -534,6 +615,110 @@
         "description": "products.views",
         "isExtraImport": true,
         "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "TemplateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "DetailView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "TemplateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "TemplateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "CreateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "Category",
+        "importPath": "categories.models",
+        "description": "categories.models",
+        "isExtraImport": true,
+        "detail": "categories.models",
+        "documentation": {}
+    },
+    {
+        "label": "Condition",
+        "importPath": "categories.models",
+        "description": "categories.models",
+        "isExtraImport": true,
+        "detail": "categories.models",
+        "documentation": {}
+    },
+    {
+        "label": "Category",
+        "importPath": "categories.models",
+        "description": "categories.models",
+        "isExtraImport": true,
+        "detail": "categories.models",
         "documentation": {}
     },
     {
@@ -610,15 +795,6 @@
         "documentation": {}
     },
     {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
         "label": "stripe",
         "kind": 6,
         "isExtraImport": true,
@@ -628,75 +804,19 @@
         "documentation": {}
     },
     {
-        "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
         "isExtraImport": true,
-        "detail": "django.views.generic",
+        "detail": "datetime",
         "documentation": {}
     },
     {
-        "label": "TemplateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
         "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "DetailView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "TemplateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "TemplateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "CreateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "UpdateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
+        "detail": "decimal",
         "documentation": {}
     },
     {
@@ -809,22 +929,6 @@
         "description": "django",
         "isExtraImport": true,
         "detail": "django",
-        "documentation": {}
-    },
-    {
-        "label": "Condition",
-        "importPath": "categories.models",
-        "description": "categories.models",
-        "isExtraImport": true,
-        "detail": "categories.models",
-        "documentation": {}
-    },
-    {
-        "label": "Category",
-        "importPath": "categories.models",
-        "description": "categories.models",
-        "isExtraImport": true,
-        "detail": "categories.models",
         "documentation": {}
     },
     {
@@ -1372,6 +1476,15 @@
         "documentation": {}
     },
     {
+        "label": "category_list",
+        "kind": 2,
+        "importPath": "ecommerce.views",
+        "description": "ecommerce.views",
+        "peekOfCode": "def category_list(request):\n    categories = Category.objects.all()\n    return render(request, \"side_bar.html\", {\"categories\": categories})",
+        "detail": "ecommerce.views",
+        "documentation": {}
+    },
+    {
         "label": "application",
         "kind": 5,
         "importPath": "ecommerce.wsgi",
@@ -1399,6 +1512,33 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "payment.migrations.0003_purchased",
+        "description": "payment.migrations.0003_purchased",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('payment', '0002_userpayment_products'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Purchased',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "payment.migrations.0003_purchased",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "payment.migrations.0004_remove_userpayment_products_and_more",
+        "description": "payment.migrations.0004_remove_userpayment_products_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('payment', '0003_purchased'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='userpayment',\n            name='products',\n        ),\n        migrations.AddField(",
+        "detail": "payment.migrations.0004_remove_userpayment_products_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "payment.migrations.0005_remove_userpayment_product_image_and_more",
+        "description": "payment.migrations.0005_remove_userpayment_product_image_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0005_comment'),\n        ('payment', '0004_remove_userpayment_products_and_more'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='userpayment',\n            name='product_image',\n        ),",
+        "detail": "payment.migrations.0005_remove_userpayment_product_image_and_more",
+        "documentation": {}
+    },
+    {
         "label": "PaymentConfig",
         "kind": 6,
         "importPath": "payment.apps",
@@ -1412,16 +1552,7 @@
         "kind": 6,
         "importPath": "payment.models",
         "description": "payment.models",
-        "peekOfCode": "class UserPayment(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    checkout_id = models.CharField(max_length=500)\n    is_successful = models.BooleanField(default=False)\n    created_at = models.DateTimeField(auto_now_add=True)\n    products = models.ManyToManyField(Product)\n    def __str__(self):\n        return f\"{self.user.username} - {self.checkout_id}\"\n@receiver(post_save, sender=User)\ndef create_user_payment(sender, instance, created, **kwargs):",
-        "detail": "payment.models",
-        "documentation": {}
-    },
-    {
-        "label": "create_user_payment",
-        "kind": 2,
-        "importPath": "payment.models",
-        "description": "payment.models",
-        "peekOfCode": "def create_user_payment(sender, instance, created, **kwargs):\n    if created:\n        UserPayment.objects.create(user=instance)",
+        "peekOfCode": "class UserPayment(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    checkout_id = models.CharField(max_length=500)\n    is_successful = models.BooleanField(default=False)\n    created_at = models.DateTimeField(auto_now_add=True)\n    products = models.ManyToManyField(Product)\n    # class UserPayment(models.Model):\n    #     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)\n    #     checkout_id = models.CharField(max_length=255)\n    #     is_successful = models.BooleanField(default=False)",
         "detail": "payment.models",
         "documentation": {}
     },
@@ -1457,7 +1588,7 @@
         "kind": 6,
         "importPath": "payment.views",
         "description": "payment.views",
-        "peekOfCode": "class PaymentHistoryView(LoginRequiredMixin, ListView):\n    model = UserPayment\n    template_name = \"payment_history.html\"\n    context_object_name = \"payment_history\"\n    def get_queryset(self):\n        queryset = super().get_queryset()\n        queryset = queryset.filter(user=self.request.user).order_by(\"-created_at\")\n        return queryset\n    def get_context_data(self, **kwargs):\n        context = super().get_context_data(**kwargs)",
+        "peekOfCode": "class PaymentHistoryView(LoginRequiredMixin, ListView):\n    model = UserPayment\n    template_name = \"payment_history.html\"\n    context_object_name = \"payments\"\n    def get_queryset(self):\n        queryset = super().get_queryset()\n        return queryset.filter(user=self.request.user)",
         "detail": "payment.views",
         "documentation": {}
     },
@@ -1646,7 +1777,7 @@
         "kind": 6,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "class ProductDeleteView(LoginRequiredMixin, DeleteView):\n    model = Product\n    success_url = reverse_lazy(\"products:productlist\")\n    template_name = \"delete_product.html\"\nclass CheckoutSessionView(View):\n    def post(self, request, *args, **kwargs):\n        checkout_session = stripe.checkout.Session.create(\n            line_items=[\n                {\n                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell",
+        "peekOfCode": "class ProductDeleteView(LoginRequiredMixin, DeleteView):\n    model = Product\n    template_name = \"user_profile.html\"\n    success_url = reverse_lazy(\"useraccount:userprofile\")\n    def delete(self, request, *args, **kwargs):\n        self.object = self.get_object()\n        success_url = reverse_lazy(\"useraccount:userprofile\")\n        self.object.delete()\n        return redirect(success_url)\nclass CheckoutSessionView(View):",
         "detail": "products.views",
         "documentation": {}
     },
@@ -1718,7 +1849,7 @@
         "kind": 6,
         "importPath": "useraccount.forms",
         "description": "useraccount.forms",
-        "peekOfCode": "class LoginForm(AuthenticationForm):\n    username = forms.CharField(\n        max_length=254,\n        widget=forms.TextInput(\n            attrs={\"name\": \"username\", \"class\": \"form-control\", \"autofocus\": True}\n        ),\n    )\n    password = forms.CharField(\n        label=(\"Password\"),\n        widget=forms.PasswordInput(attrs={\"name\": \"password\", \"class\": \"form-control\"}),",
+        "peekOfCode": "class LoginForm(AuthenticationForm):\n    username = forms.CharField(\n        max_length=254,\n        widget=forms.TextInput(\n            attrs={\n                \"name\": \"username\",\n                \"class\": \"w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm\",\n                \"autofocus\": True,\n            }\n        ),",
         "detail": "useraccount.forms",
         "documentation": {}
     },

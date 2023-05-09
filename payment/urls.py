@@ -1,11 +1,11 @@
 from django.urls import path
 from .views import (
     CheckoutView,
-    product_page,
     payment_cancelled,
     payment_successful,
-    stripe_webhook,
     PaymentHistoryView,
+    product_page,
+    stripe_webhook,
 )
 
 

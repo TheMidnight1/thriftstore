@@ -1,4 +1,41 @@
 {% extends 'base_nav.html' %} {% block maincontent %}
+<!-- CSS for the modal -->
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 640px;
+    height: 50%;
+    max-height: 480px;
+    overflow-y: auto;
+    border-radius: 4px;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
 
 <div class="mx-auto mt-20 px-4 max-w-screen-lg">
   <div class="max-w-5xl p-8">
@@ -16,18 +53,6 @@
         </h1>
         <p class="text-gray-500 mb-4">No reviews yet</p>
         <div class="flex items-center mb-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-gray-700 mr-2"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 3a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm1 1v3h10V4H4zm0 7a1 1 0 011-1h12a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5zm1 1v3h10v-3H4z"
-              clip-rule="evenodd"
-            />
-          </svg>
           <p class="text-gray-700">Nepal</p>
         </div>
       </div>
@@ -80,24 +105,65 @@
         <div class="edit-btn">
           <a href="{% url 'products:editproduct' pk=product.pk %}">
             <button
-              class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
+              class="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
             >
               Edit
             </button>
           </a>
         </div>
-        <div class="delete-btn">
-          <button
-            id="open-modal"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Open Modal
-          </button>
+        <!-- Button to open the modal -->
+        <button
+          class="bg-red-700 hover:bg-red-900 text-white font-bold py-1 px-2 rounded"
+          onclick="toggleModal()"
+        >
+          Delete
+        </button>
+
+        <!-- Modal container -->
+        <div
+          class="fixed z-10 inset-0 overflow-y-auto"
+          style="display: none"
+          id="myModal"
+        >
+          <div class="flex items-center justify-center min-h-screen">
+            <div
+              class="bg-white rounded-lg shadow-lg p-8"
+              style="max-width: 640px; width: 100%"
+            >
+              <h2 class="text-xl font-bold mb-4">
+                Are you sure you want to delete the product?
+              </h2>
+              <p class="mb-4">
+                Are sure you want to delete <strong>{{product.name}}?</strong>
+              </p>
+              <a href="{% url 'products:deleteproduct' pk=product.pk %}">
+                <button
+                  class="bg-gray-500 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded"
+                >
+                  Delete
+                </button>
+              </a>
+              <button
+                class="bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                onclick="toggleModal()"
+              >
+                Close Cancel
+              </button>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!-- JavaScript to toggle the modal -->
+          <script>
+            function toggleModal() {
+              var modal = document.getElementById("myModal");
+              modal.style.display =
+                modal.style.display === "none" ? "block" : "none";
+            }
+          </script>
         </div>
       </div>
     </div>
-
-    {% endfor %}
   </div>
-  {% comment %} Model of Edit Profile {% endcomment %} {% endblock maincontent%}
 </div>
+{% endblock maincontent%}

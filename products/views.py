@@ -73,8 +73,15 @@ class ProductEditView(LoginRequiredMixin, UpdateView):
 
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
-    success_url = reverse_lazy("products:productlist")
-    template_name = "delete_product.html"
+    template_name = "user_profile.html"
+    success_url = reverse_lazy("useraccount:userprofile")
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = reverse_lazy("useraccount:userprofile")
+
+        self.object.delete()
+        return redirect(success_url)
 
 
 class CheckoutSessionView(View):

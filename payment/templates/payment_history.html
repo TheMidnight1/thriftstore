@@ -1,32 +1,42 @@
-{% extends 'base_nav.html' %} {% block maincontent %}
-<div class="py-10">
-  <h1 class="text-3xl font-bold mb-5">Payment History</h1>
-  <div class="overflow-x-auto">
-    <table class="table-auto border-collapse w-full">
-      <thead>
-        <tr class="text-left font-bold">
-          <th class="px-4 py-2">#</th>
-          <th class="px-4 py-2">Product Name</th>
-          <th class="px-4 py-2">Price</th>
-          <th class="px-4 py-2">Time Purchased</th>
-          <th class="px-4 py-2">Seller Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for payment, product_details in payment_details %} 
-        {% for product,seller_username in product_details %}
-        <tr>
-          <td class="border px-4 py-2">
-            {{ forloop.parentloop.counter }}.{{ forloop.counter }}
-          </td>
-          <td class="border px-4 py-2">{{ product.name }}</td>
-          <td class="border px-4 py-2">${{ product.price }}</td>
-          <td class="border px-4 py-2">{{ payment.created_at }}</td>
-          <td class="border px-4 py-2">{{ seller_username }}</td>
-        </tr>
-        {% endfor %} {% endfor %}
-      </tbody>
-    </table>
+  {% extends 'base_site.html' %} {% block maincontent %}
+  <div class="mx-auto mt-20 px-4 max-w-screen-lg">
+    <ul role="list" class="divide-y divide-gray-100">
+      {% for payment in payments %}
+
+      <li class="flex justify-between gap-x-6 py-5">
+        <div class="flex gap-x-4">
+          <img
+            class="h-12 w-12 flex-none rounded-full bg-gray-50"
+            src = ""
+            alt=""
+          />
+          
+          <div class="min-w-0 flex-auto">
+            <p class="text-sm font-semibold leading-6 text-gray-900">
+              {{payment.user.username}}
+            </p>
+            <p class="mt-1 truncate text-xs leading-5 text-gray-500">
+              {{payment.user.email}}
+            </p>
+          </div>
+          
+        </div>
+        <div>
+          {% comment %} {% for product in payment.products.all %}
+          {{ product.price }}
+        {% endfor %} {% endcomment %}
+        price
+        </div>
+        <div class="hidden sm:flex sm:flex-col sm:items-end">
+          <p class="text-sm leading-6 text-gray-900">{{payment.created_at}}</p>
+
+        </div>
+      </li>
+      {% endfor %}
+
+    
+    </ul>
   </div>
-</div>
-{% endblock %}
+  </div>
+
+    {% endblock %}

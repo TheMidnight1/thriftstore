@@ -190,13 +190,32 @@ class UserForm(UserCreationForm):
             "phone_number",
         ]
         widgets = {
-            "date_of_birth": SelectDateWidget(years=range(1923, 2023)),
-            "username": forms.TextInput(attrs={"class": "form-control"}),
-            "email": forms.EmailInput(attrs={"class": "form-control"}),
-            "password": forms.PasswordInput(attrs={"class": "form-control"}),
-            "first_name": forms.TextInput(attrs={"class": "form-control"}),
-            "last_name": forms.TextInput(attrs={"class": "form-control"}),
-            "phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "username": forms.TextInput(attrs={"class": ""}),
+            "email": forms.EmailInput(
+                attrs={
+                    "class": "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:bg-gray-700 dark:text-white"
+                }
+            ),
+            "password": forms.PasswordInput(
+                attrs={
+                    "class": "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:bg-gray-700 dark:text-white"
+                }
+            ),
+            "first_name": forms.TextInput(
+                attrs={
+                    "class": "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:bg-gray-700 dark:text-white"
+                }
+            ),
+            "last_name": forms.TextInput(
+                attrs={
+                    "class": "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:bg-gray-700 dark:text-white"
+                }
+            ),
+            "phone_number": forms.TextInput(
+                attrs={
+                    "class": "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md dark:bg-gray-700 dark:text-white"
+                }
+            ),
         }
 
 
@@ -204,12 +223,21 @@ class LoginForm(AuthenticationForm):
     username = forms.CharField(
         max_length=254,
         widget=forms.TextInput(
-            attrs={"name": "username", "class": "form-control", "autofocus": True}
+            attrs={
+                "name": "username",
+                "class": "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
+                "autofocus": True,
+            }
         ),
     )
     password = forms.CharField(
         label=("Password"),
-        widget=forms.PasswordInput(attrs={"name": "password", "class": "form-control"}),
+        widget=forms.PasswordInput(
+            attrs={
+                "name": "password",
+                "class": "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
+            }
+        ),
     )
 
 
