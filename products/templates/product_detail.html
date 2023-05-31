@@ -21,6 +21,11 @@
   }
 -->
 
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
 <section>
   <div class="relative mx-auto max-w-screen-xl px-4 py-8">
     <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2 bg-white">
@@ -618,73 +623,64 @@
       </div>
     </section>
 
-    <div class="bg-white p-6 rounded-lg shadow-md">
-      <h2 class="text-xl font-medium mb-4">Questions About This Product</h2>
-      <div class="divide-y divide-gray-200">
-        <div class="py-4">
-          <h3 class="text-lg font-medium mb-2">
-            Q: What is the warranty for this product?
-          </h3>
-          <p class="text-gray-700">
-            A: The warranty for this product is one year.
-          </p>
+    {% comment %} Comment Section {% endcomment %}
+    <div class="relative mx-auto max-w-screen-xl px-4 py-8 bg-white">
+      <h3 class="font-bold">Comments</h3>
+      <div class="flex flex-col">
+        {% if product.comments.all %} {% for comment in product.comments.all %}
+        <div class="border rounded-md p-3 ml-3 my-3">
+          <div class="flex gap-4">
+            <div class="flex gap-3 items-center">
+              <img
+                src="{{ comment.user.image.url }}"
+                class="object-cover w-8 h-8 rounded-full border-2 border-emerald-400 shadow-emerald-400"
+              />
+              <h3 class="font-bold">{{ comment.user.get_full_name }}</h3>
+            </div>
+            <div class="date">{{ comment.created_at|date:"F d, Y" }}</div>
+          </div>
+          <p class="text-gray-600 mt-2 comment-content">{{ comment.content }}</p>
+          
+
+          {% comment %} Edit buttons of comment {% endcomment %}
+
+
+
+          {% comment %} Delete buttons of comment {% endcomment %} 
+          {% if request.user == comment.user %}
+
+          <form method="post" action="{% url 'products:delete_comment' comment_id=comment.id%}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+          </form>
+          {% endif %}
         </div>
-        <div class="py-4">
-          <h3 class="text-lg font-medium mb-2">
-            Q: Is this product compatible with Windows 10?
-          </h3>
-          <p class="text-gray-700">
-            A: Yes, this product is compatible with Windows 10.
-          </p>
-        </div>
-        <div class="py-4">
-          <h3 class="text-lg font-medium mb-2">
-            Q: Can this product be used with an iPhone?
-          </h3>
-          <p class="text-gray-700">
-            A: No, this product is not compatible with iPhones.
-          </p>
-        </div>
+        {% endfor %} {% else %}
+        <h3>No comments yet</h3>
+        {% endif %}
       </div>
-      <div class="p-4">
-        <button
-          id="ask-btn"
-          class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
-        >
-          Ask a Question
-        </button>
-        <div id="question-field" class="hidden mt-4">
-          <label for="question" class="block mb-2 font-medium text-gray-700"
-            >Ask your question:</label
-          >
-          <textarea
-            id="question"
-            name="question"
-            rows="3"
-            class="w-full px-3 py-2 border rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-          ></textarea>
-          <button
-            id="ask-btn"
-            class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
-          >
-            Submit your question
-          </button>
-        </div>
+
+      <div class="add-comment">
+        <h2 class="text-2xl font-bold mb-4">Add a Comment</h2>
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="mb-4">
+            {{ comment_form.content.label_tag }}
+            {{ comment_form.content }}
+          </div>
+          {{ comment_form.product_id }}
+          <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Submit</button>
+        </form>
       </div>
+      
     </div>
-    <div class="similar-user-account"></div>
   </div>
 </section>
 
 <!-- Javascript code -->
+
 <script>
   const askBtn = document.getElementById("ask-btn");
-  const questionField = document.getElementById("question-field");
-
-  askBtn.addEventListener("click", () => {
-    askBtn.classList.add("hidden");
-    questionField.classList.remove("hidden");
-  });
 
   // set the default active slide to the first one
   let slideIndex = 1;
@@ -730,5 +726,7 @@
     dots[slideIndex - 1].classList.remove("bg-green-600");
     dots[slideIndex - 1].classList.add("bg-yellow-500");
   }
+
+ 
 </script>
 {% endblock maincontent %}

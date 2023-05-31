@@ -28,7 +28,8 @@ class UserPayment(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.checkout_id}"
 
-    @receiver(post_save, sender=User)
-    def create_user_payment(sender, instance, created, **kwargs):
-        if created:
-            UserPayment.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def create_user_payment(sender, instance, created, **kwargs):
+    if created:
+        UserPayment.objects.create(user=instance)

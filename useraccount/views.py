@@ -1,16 +1,15 @@
 from .models import User
-from .forms import UserForm, EditProfileForm, ChangePasswordForm
 from .forms import LoginForm
-from django.contrib import messages
 from products.models import Product
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
-from django.views.generic import TemplateView, ListView
-from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LogoutView
+from django.views.generic import TemplateView, ListView
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth import get_user_model
+from .forms import UserForm, EditProfileForm, ChangePasswordForm
+from django.contrib.auth.views import LoginView, PasswordChangeView
 
 
 # def RegisterView(request):
@@ -90,5 +89,6 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
 
 class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
     template_name = "change_password.html"
-    success_url = reverse_lazy("useraccount:edit_profile")
     form_class = ChangePasswordForm
+    context_object_name = "form"
+    success_url = reverse_lazy("useraccount:edit_profile")

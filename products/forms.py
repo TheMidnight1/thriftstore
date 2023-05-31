@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Category, Condition
+from .models import Product, Category, Condition, Comment
 
 from django import forms
 from .models import Product
@@ -60,3 +60,18 @@ class ProductForm(forms.ModelForm):
                 }
             ),
         }
+
+
+# class CommentForm(forms.Form):
+#     content = forms.CharField(widget=forms.Textarea(attrs={"rows": 3}))
+class CommentForm(forms.Form):
+    content = forms.CharField(widget=forms.Textarea(attrs={"rows": 3}), label="Content")
+    product_id = forms.IntegerField(widget=forms.HiddenInput)
+
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields["content"].widget.attrs.update(
+            {
+                "class": "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            }
+        )  #     product_id = forms.IntegerField(widget=forms.HiddenInput)

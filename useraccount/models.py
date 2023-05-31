@@ -19,4 +19,9 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
-    image = models.ImageField(upload_to="user_images", blank=True, null=True)
+    image = models.ImageField(
+        upload_to="images/",
+        blank=True,
+        null=True,
+        default="images/default.jpg",
+    )

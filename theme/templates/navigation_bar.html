@@ -1,10 +1,16 @@
+{% load static %}
 <header aria-label="Site Header" class="bg-white">
   <div
     class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8"
   >
     <a class="block text-teal-600" href="/">
       <span class="sr-only">Home</span>
-      <img src="" alt="ThirftShop" srcset="" />
+      <img
+        class="w-24"
+        src="{% static 'images/logo.png' %}"
+        alt="ThirftShop"
+        srcset=""
+      />
     </a>
 
     <div class="flex flex-1 items-center justify-end md:justify-between">
@@ -18,15 +24,16 @@
               Home
             </a>
           </li>
+          {% if user.is_authenticated %}
           <li>
             <a
               class="text-gray-500 transition hover:text-gray-500/75"
-              href="{%url 'payment:payment_history'%}"
+              href="{%url 'payment:payment_history' user.id%}"
             >
               Payment History
             </a>
           </li>
-          {% if user.is_authenticated %}
+          {% endif %} {% if user.is_authenticated %}
           <li>
             <a
               class="text-gray-500 transition hover:text-gray-500/75"
@@ -38,6 +45,15 @@
           {% endif %}
         </ul>
       </nav>
+      {% comment %} Search bar {% endcomment %}
+      <form action="{% url 'products:homepage' %}" method="GET">
+        <div class="shadow flex">
+            <input class="w-full rounded p-2" type="text" name="search_term" placeholder="Search...">
+            <button class="w-auto flex justify-end items-center text-blue p-2 hover:text-blue-light" type="submit">
+                <i class="material-icons">search</i>
+            </button>
+        </div>
+    </form>
 
       <div class="flex items-center gap-4">
         <div class="sm:flex sm:gap-4">
@@ -88,3 +104,4 @@
     </div>
   </div>
 </header>
+

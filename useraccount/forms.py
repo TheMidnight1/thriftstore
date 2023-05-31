@@ -1,14 +1,16 @@
 from django import forms
 from .models import User
-from django.utils import timezone
+from django.forms.widgets import RadioSelect
 from django.contrib.auth import get_user_model
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
-from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.forms.widgets import RadioSelect, SelectDateWidget
+from django.contrib.auth.forms import (
+    UserChangeForm,
+    PasswordChangeForm,
+    UserCreationForm,
+)
 
 
 # def validate_password(value):
@@ -253,12 +255,43 @@ class EditProfileForm(UserChangeForm):
             "image",
         )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Remove password field
+        self.fields.pop("password")
+        # Add custom classes to form fields
+        for field_name, field in self.fields.items():
+            field.widget.attrs.update(
+                {
+                    "class": "appearance-none block w-full py-2 px-3 leading-tight border border-gray-300 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+                }
+            )
+
 
 class ChangePasswordForm(PasswordChangeForm):
-    old_password = forms.CharField(label="Old Password", widget=forms.PasswordInput)
-    new_password1 = forms.CharField(label="New Password", widget=forms.PasswordInput)
+    old_password = forms.CharField(
+        label="Old Password",
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
+            }
+        ),
+    )
+    new_password1 = forms.CharField(
+        label="New Password",
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
+            }
+        ),
+    )
     new_password2 = forms.CharField(
-        label="Confirm New Password", widget=forms.PasswordInput
+        label="Confirm New Password",
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm",
+            }
+        ),
     )
 
     class Meta:

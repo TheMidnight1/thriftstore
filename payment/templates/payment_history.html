@@ -2,7 +2,7 @@
   <div class="mx-auto mt-20 px-4 max-w-screen-lg">
     <ul role="list" class="divide-y divide-gray-100">
       {% for payment in payments %}
-
+{% if payment.checkout_id  %}
       <li class="flex justify-between gap-x-6 py-5">
         <div class="flex gap-x-4">
           <img
@@ -25,13 +25,14 @@
           {% comment %} {% for product in payment.products.all %}
           {{ product.price }}
         {% endfor %} {% endcomment %}
-        price
+        {{payment.products}}
         </div>
         <div class="hidden sm:flex sm:flex-col sm:items-end">
           <p class="text-sm leading-6 text-gray-900">{{payment.created_at}}</p>
 
         </div>
       </li>
+      {% endif %}
       {% endfor %}
 
     

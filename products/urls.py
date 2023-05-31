@@ -20,16 +20,24 @@ from django.contrib import admin
 from .views import (
     HomepageView,
     PostProduct,
-    ProductDetailView,
     ProductEditView,
     ProductDeleteView,
+    product_detail,
+    delete_comment,
+    # search_products,
 )
 
 app_name = "products"
 urlpatterns = [
     path("", HomepageView.as_view(), name="homepage"),
     path("postproduct/", PostProduct.as_view(), name="postproduct"),
-    path("products/<int:pk>/", ProductDetailView.as_view(), name="productdetail"),
+    path("products/<int:pk>/", product_detail, name="productdetail"),
     path("editproducts/<int:pk>/", ProductEditView.as_view(), name="editproduct"),
+    path(
+        "delete_comment/<int:comment_id>/",
+        delete_comment,
+        name="delete_comment",
+    ),
     path("deleteproduct/<int:pk>/", ProductDeleteView.as_view(), name="deleteproduct"),
+    # path("search/", search_products, name="search"),
 ]

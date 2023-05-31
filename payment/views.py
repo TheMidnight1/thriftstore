@@ -5,7 +5,7 @@ from decimal import Decimal
 from .models import UserPayment
 from django.conf import settings
 from products.models import Product
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic import ListView
 from django.http import Http404, HttpResponse
 from django.views.generic import TemplateView
@@ -17,7 +17,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
-class CheckoutView(TemplateView):
+class CheckoutView(LoginRequiredMixin, TemplateView):
     model = Product
     template_name = "checkout.html"
     context_object_name = "product"
@@ -77,6 +77,7 @@ def payment_successful(request):
     )
     user_payment.save()
     payment_history = UserPayment.objects.filter(user=request.user)
+    print(payment_history)
     return render(
         request,
         "payment_successful.html",
@@ -112,11 +113,18 @@ def stripe_webhook(request):
     return HttpResponse(status=200)
 
 
-class PaymentHistoryView(LoginRequiredMixin, ListView):
-    model = UserPayment
-    template_name = "payment_history.html"
-    context_object_name = "payments"
+# class PaymentHistoryView(LoginRequiredMixin, ListView):
+#     model = UserPayment
+#     template_name = "payment_history.html"
+#     context_object_name = "payments"
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.filter(user=self.request.user)
+#     def get(self, request):
+#         # def get_queryset(self):
+#         queryset = super().get_queryset()
+#         return queryset.filter(user=request.user)
+
+
+@login_required
+def purchasedHistory(request, userid):
+    purchasedHistory = UserPayment.objects.filter(user_id=userid)
+    return render(request, "payment_history.html", {"payments": purchasedHistory})

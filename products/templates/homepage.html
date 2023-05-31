@@ -7,7 +7,7 @@
     <div
       class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
     >
-      {% for product in products %}
+      {% if products %} {% for product in products %}
       <div class="group relative m-4">
         <a href="{% url 'products:productdetail' pk=product.pk %}">
           <div
@@ -36,7 +36,11 @@
         </a>
       </div>
 
-      {% endfor %}
+      {% endfor %} {% else %} {% if search_term %}
+      <p>No products found for your search term: {{ search_term }}</p>
+      {% else %}
+      <p>No products available.</p>
+      {% endif %} {% endif %}
     </div>
   </div>
 </div>
