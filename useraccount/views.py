@@ -53,6 +53,7 @@ class UserProfile(LoginRequiredMixin, ListView):
     def get_queryset(self):
         # Return only products posted by the current user
         queryset = super().get_queryset().filter(user=self.request.user)
+
         return queryset
 
 

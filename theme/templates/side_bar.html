@@ -1,38 +1,46 @@
-<div class="flex h-screen flex-col justify-between border-e bg-white">
-  <div class="px-4 py-6">
-    <nav aria-label="Main Nav" class="mt-6 flex flex-col space-y-1">
-      <h1>Categories</h1>
-      {% for category in sidebar_data.categories %}
+<div class="sticky top-0">
+  <div class="flex h-screen flex-col justify-between border-e bg-white">
+    <div class="px-4 py-6">
+      <nav aria-label="Main Nav" class="mt-6 flex flex-col space-y-1">
+        <h1>Categories</h1>
+        {% for category in sidebar_data.categories %}
+        <a
+          href="{% url 'categories:category_products' category_id=category.id %}"
+          class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+        >
+          <span class="text-sm font-medium">{{category.name}}</span>
+        </a>
+        {% endfor %}
 
-      <a
-        href="#"
-        class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-      >
-        <span class="text-sm font-medium"> {{category.name}} </span>
+        <h1>Add Filter</h1>
+        {% for condition in sidebar_data.condition %}
+        <a
+          href="{% url 'categories:condition_products' condition_id=condition.id %}"
+          class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+        >
+          <span class="text-sm font-medium">{{condition.name}}</span>
+        </a>
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div class="sticky inset-x-0 bottom-0 border-t border-gray-100">
+      {% if user.is_authenticated %}
+      <a href="#" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
+        <img
+          alt="Man"
+          src="{{user.image.url}}"
+          class="h-10 w-10 rounded-full object-cover"
+        />
+
+        <div>
+          <p class="text-xs">
+            <strong class="block font-medium">{{user}}</strong>
+            <span>{{user.email}}</span>
+          </p>
+        </div>
       </a>
-      {% endfor %}
-
-      <h1>Add Filter</h1>
-    </nav>
-  </div>
-
-  <div class="sticky inset-x-0 bottom-0 border-t border-gray-100">
-    {% if user.is_authenticated %}
-    <a href="#" class="flex items-center gap-2 bg-white p-4 hover:bg-gray-50">
-      <img
-        alt="Man"
-        src="{{user.image.url}}"
-        class="h-10 w-10 rounded-full object-cover"
-      />
-
-      <div>
-        <p class="text-xs">
-          <strong class="block font-medium">{{user}}</strong>
-
-          <span> {{user.email}} </span>
-        </p>
-      </div>
-    </a>
-    {% endif %}
+      {% endif %}
+    </div>
   </div>
 </div>

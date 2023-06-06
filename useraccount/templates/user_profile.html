@@ -1,4 +1,5 @@
 {% extends 'base_nav.html' %} {% block maincontent %}
+
 <!-- CSS for the modal -->
 <style>
   .modal {
@@ -51,13 +52,12 @@
         <h1 class="text-3xl font-bold text-gray-800 mb-2">
           {{ user.first_name }} {{ user.last_name }}
         </h1>
-        <p class="text-gray-500 mb-4">No reviews yet</p>
         <div class="flex items-center mb-4">
           <p class="text-gray-700">Nepal</p>
         </div>
       </div>
       <div class="col-span-1 flex justify-center items-center">
-        <a href="{%url 'useraccount:edit_profile'%}">
+        <a href="{% url 'useraccount:edit_profile' %}">
           <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
@@ -67,39 +67,36 @@
       </div>
     </div>
   </div>
-  <div class="flex gap-16">
+
+  <div class="flex gap-16 mt-8">
     <div>
       <h3>Items</h3>
     </div>
-    <div>
-      <h3>Reviews</h3>
-    </div>
   </div>
-  <hr class="border-gray-300 w-1/1 my-8" />
+  <hr class="border-gray-300 w-full my-8" />
 
-  <div
-    class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
-  >
+  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-8">
     {% for product in products %}
-    <div class="group relative">
+    <div class="group">
       <div
-        class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-180"
+        class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden rounded-md group-hover:opacity-75"
       >
         <img
-          src="{{product.product_image.url}}"
+          src="{{ product.product_image.url }}"
           alt="Front of men's Basic Tee in black."
-          class="h-full w-full object-cover"
+          class="h-full w-full object-center"
         />
       </div>
       <div class="mt-4 flex justify-between">
         <div>
-          <h3 class="text-sm text-gray-700 truncate">
-            <a href="#"> {{product.name}} </a>
+          <h3
+            class="text-sm text-gray-700 overflow-hidden whitespace-nowrap overflow-ellipsis"
+          >
+            <a href="#" class="hover:text-gray-900">{{ product.name }}</a>
           </h3>
-          <p class="mt-1 text-sm text-gray-500">{{product.category}}</p>
+          <p class="mt-1 text-sm text-gray-500">{{ product.category }}</p>
         </div>
-        <p class="text-sm font-medium text-gray-900">Rs {{product.price}}</p>
-        <p class="text-sm font-medium text-gray-900">Rs {{user.username}}</p>
+        <p class="text-sm font-medium text-gray-900">Rs {{ product.price }}</p>
       </div>
       <div class="buttons flex gap-3 mt-4">
         <div class="edit-btn">
@@ -134,7 +131,8 @@
                 Are you sure you want to delete the product?
               </h2>
               <p class="mb-4">
-                Are sure you want to delete <strong>{{product.name}}?</strong>
+                Are you sure you want to delete
+                <strong>{{ product.name }}</strong>?
               </p>
               <a href="{% url 'products:deleteproduct' pk=product.pk %}">
                 <button
@@ -151,19 +149,19 @@
               </button>
             </div>
           </div>
-          {% endfor %}
-
-          <!-- JavaScript to toggle the modal -->
-          <script>
-            function toggleModal() {
-              var modal = document.getElementById("myModal");
-              modal.style.display =
-                modal.style.display === "none" ? "block" : "none";
-            }
-          </script>
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
 </div>
-{% endblock maincontent%}
+
+<!-- JavaScript to toggle the modal -->
+<script>
+  function toggleModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = modal.style.display === "none" ? "block" : "none";
+  }
+</script>
+
+{% endblock maincontent %}

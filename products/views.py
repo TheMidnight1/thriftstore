@@ -1,25 +1,22 @@
-import django.contrib
 import stripe
-import json
-from django.db.models import Q
+from django import forms
 
 from django.views import View
 from .forms import CommentForm
 from django.urls import reverse
-from django.conf import settings
 from django.contrib import messages
+from django.http import JsonResponse
 from .models import Product, Comment
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from categories.models import Category
 from django.views.generic import ListView
-from django.views.generic import DetailView
-from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404, render
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.paginator import Paginator
+from django.conf import settings
 
 
 # class HomepageView(ListView):
@@ -44,6 +41,7 @@ class HomepageView(ListView):
     model = Product
     template_name = "homepage.html"
     context_object_name = "products"
+    paginate_by = settings.DEFAULT_PAGINATION_SIZE
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -53,11 +51,9 @@ class HomepageView(ListView):
             queryset = queryset.filter(name__icontains=search_term)
 
         if not self.request.user.is_authenticated:
-            # Return all products if user is not logged in
-            return queryset
+            return queryset.order_by("?")  # Randomly order the products
         else:
-            # Exclude products posted by the current user
-            return queryset.exclude(user=self.request.user)
+            return queryset.exclude(user=self.request.user).order_by("?")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -204,9 +200,3 @@ def sidebar(request):
     categories = Category.objects.all()
     context = {"categories": categories}
     return render(request, "sidebar.html", context)
-
-
-# def search_products(request):
-#     search_term = request.GET.get("search_term", "")
-#     search_products = Product.objects.filter(name__icontains=search_term)
-#     return render(request, "homepage.html", {"search_products": search_products})

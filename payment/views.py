@@ -61,6 +61,14 @@ def product_page(request, product_id):
             + f"/payment_successful?session_id={{CHECKOUT_SESSION_ID}}&product_id={product.id}",
             cancel_url=settings.REDIRECT_DOMAIN + "/payment_cancelled",
         )
+
+        # Create UserPayment instance and save it to the database
+        user_payment = UserPayment.objects.create(
+            user=request.user,
+            checkout_id=checkout_session.id,
+        )
+        user_payment.products.add(product)
+
         return redirect(checkout_session.url, code=303)
 
     return render(request, "checkout.html", {"product": product})
@@ -76,12 +84,17 @@ def payment_successful(request):
         user=request.user, checkout_id=checkout_session_id, is_successful=True
     )
     user_payment.save()
-    payment_history = UserPayment.objects.filter(user=request.user)
+    payment_history = UserPayment.objects.filter(user=request.user, is_successful=True)
+    products = payment_history.values_list("products__name", flat=True)
     print(payment_history)
     return render(
         request,
         "payment_successful.html",
-        {"customer": customer, "payment_history": payment_history},
+        {
+            "customer": customer,
+            "payment_history": payment_history,
+            "products": products,
+        },
     )
 
 

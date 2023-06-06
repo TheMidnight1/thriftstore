@@ -1,4 +1,4 @@
-from .models import Category
+from .models import Category, Condition
 
 
 def sidebar_data(request):
@@ -7,5 +7,6 @@ def sidebar_data(request):
     sidebar_data = {
         "categories": Category.objects.all(),  # Assuming you have a Category model
         # Add any other data you need for your sidebar
+        "condition": Condition.objects.all(),
     }
     return {"sidebar_data": sidebar_data}

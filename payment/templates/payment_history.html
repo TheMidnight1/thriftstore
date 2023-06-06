@@ -1,43 +1,33 @@
-  {% extends 'base_site.html' %} {% block maincontent %}
-  <div class="mx-auto mt-20 px-4 max-w-screen-lg">
-    <ul role="list" class="divide-y divide-gray-100">
-      {% for payment in payments %}
-{% if payment.checkout_id  %}
-      <li class="flex justify-between gap-x-6 py-5">
-        <div class="flex gap-x-4">
+<!-- payment_history.html -->
+
+{% extends 'base_nav.html' %} {% block maincontent %}
+<h1 class="text-3xl font-bold mb-6">Purchased History</h1>
+<div class="overflow-x-auto">
+  <table class="table-auto border-collapse w-full">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Product Name</th>
+        <th class="px-4 py-2">Product Price</th>
+        <th class="px-4 py-2">Purchased Date</th>
+        <th class="px-4 py-2">Product Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for payment in payments %} {% for product in payment.products.all %}
+      <tr>
+        <td class="border px-4 py-2">{{ product.name }}</td>
+        <td class="border px-4 py-2">{{ product.price }}</td>
+        <td class="border px-4 py-2">{{ payment.created_at }}</td>
+        <td class="border px-4 py-2">
           <img
-            class="h-12 w-12 flex-none rounded-full bg-gray-50"
-            src = ""
-            alt=""
+            class="w-20 h-20 object-cover"
+            src="{{ product.product_image.url }}"
+            alt="{{ product.name }} image"
           />
-          
-          <div class="min-w-0 flex-auto">
-            <p class="text-sm font-semibold leading-6 text-gray-900">
-              {{payment.user.username}}
-            </p>
-            <p class="mt-1 truncate text-xs leading-5 text-gray-500">
-              {{payment.user.email}}
-            </p>
-          </div>
-          
-        </div>
-        <div>
-          {% comment %} {% for product in payment.products.all %}
-          {{ product.price }}
-        {% endfor %} {% endcomment %}
-        {{payment.products}}
-        </div>
-        <div class="hidden sm:flex sm:flex-col sm:items-end">
-          <p class="text-sm leading-6 text-gray-900">{{payment.created_at}}</p>
-
-        </div>
-      </li>
-      {% endif %}
-      {% endfor %}
-
-    
-    </ul>
-  </div>
-  </div>
-
-    {% endblock %}
+        </td>
+      </tr>
+      {% endfor %} {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -184,15 +184,6 @@
         "documentation": {}
     },
     {
-        "label": "django.contrib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -321,36 +312,11 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "get_asgi_application",
-        "importPath": "django.core.asgi",
-        "description": "django.core.asgi",
-        "isExtraImport": true,
-        "detail": "django.core.asgi",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "config",
-        "importPath": "decouple",
-        "description": "decouple",
-        "isExtraImport": true,
-        "detail": "decouple",
+        "detail": "django.urls",
         "documentation": {}
     },
     {
@@ -423,6 +389,159 @@
         "description": "django.urls",
         "isExtraImport": true,
         "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "HttpResponseRedirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_asgi_application",
+        "importPath": "django.core.asgi",
+        "description": "django.core.asgi",
+        "isExtraImport": true,
+        "detail": "django.core.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "importPath": "decouple",
+        "description": "decouple",
+        "isExtraImport": true,
+        "detail": "decouple",
         "documentation": {}
     },
     {
@@ -499,86 +618,6 @@
         "documentation": {}
     },
     {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "HttpResponseRedirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "get_object_or_404",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "get_object_or_404",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
         "label": "ListView",
         "importPath": "django.views.generic",
         "description": "django.views.generic",
@@ -604,22 +643,6 @@
     },
     {
         "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "DetailView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "TemplateView",
         "importPath": "django.views.generic",
         "description": "django.views.generic",
         "isExtraImport": true,
@@ -692,30 +715,6 @@
         "documentation": {}
     },
     {
-        "label": "Product",
-        "importPath": "products.models",
-        "description": "products.models",
-        "isExtraImport": true,
-        "detail": "products.models",
-        "documentation": {}
-    },
-    {
-        "label": "Product",
-        "importPath": "products.models",
-        "description": "products.models",
-        "isExtraImport": true,
-        "detail": "products.models",
-        "documentation": {}
-    },
-    {
-        "label": "Product",
-        "importPath": "products.models",
-        "description": "products.models",
-        "isExtraImport": true,
-        "detail": "products.models",
-        "documentation": {}
-    },
-    {
         "label": "receiver",
         "importPath": "django.dispatch",
         "description": "django.dispatch",
@@ -774,22 +773,6 @@
     },
     {
         "label": "JsonResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
-        "label": "HttpResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
-        "label": "HttpResponseRedirect",
         "importPath": "django.http",
         "description": "django.http",
         "isExtraImport": true,
@@ -893,6 +876,14 @@
         "documentation": {}
     },
     {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
         "label": "Condition",
         "importPath": "categories.models",
         "description": "categories.models",
@@ -914,23 +905,6 @@
         "description": "categories.models",
         "isExtraImport": true,
         "detail": "categories.models",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "Q",
-        "importPath": "django.db.models",
-        "description": "django.db.models",
-        "isExtraImport": true,
-        "detail": "django.db.models",
         "documentation": {}
     },
     {
@@ -963,6 +937,14 @@
         "description": "django.views.generic.edit",
         "isExtraImport": true,
         "detail": "django.views.generic.edit",
+        "documentation": {}
+    },
+    {
+        "label": "Paginator",
+        "importPath": "django.core.paginator",
+        "description": "django.core.paginator",
+        "isExtraImport": true,
+        "detail": "django.core.paginator",
         "documentation": {}
     },
     {
@@ -1169,7 +1151,7 @@
         "kind": 2,
         "importPath": "categories.context_processors",
         "description": "categories.context_processors",
-        "peekOfCode": "def sidebar_data(request):\n    # Your logic to fetch sidebar data, such as categories, tags, or any other dynamic content\n    # You can fetch the data from your models or any other data source\n    sidebar_data = {\n        \"categories\": Category.objects.all(),  # Assuming you have a Category model\n        # Add any other data you need for your sidebar\n    }\n    return {\"sidebar_data\": sidebar_data}",
+        "peekOfCode": "def sidebar_data(request):\n    # Your logic to fetch sidebar data, such as categories, tags, or any other dynamic content\n    # You can fetch the data from your models or any other data source\n    sidebar_data = {\n        \"categories\": Category.objects.all(),  # Assuming you have a Category model\n        # Add any other data you need for your sidebar\n        \"condition\": Condition.objects.all(),\n    }\n    return {\"sidebar_data\": sidebar_data}",
         "detail": "categories.context_processors",
         "documentation": {}
     },
@@ -1189,6 +1171,42 @@
         "description": "categories.models",
         "peekOfCode": "class Condition(models.Model):\n    name = models.CharField(max_length=100)\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n    def __str__(self):\n        return self.name",
         "detail": "categories.models",
+        "documentation": {}
+    },
+    {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "categories.urls",
+        "description": "categories.urls",
+        "peekOfCode": "app_name = \"categories\"\nurlpatterns = [\n    path(\"category/<int:category_id>/\", category_products, name=\"category_products\"),\n    path(\n        \"condition/<int:condition_id>/\", condition_products, name=\"condition_products\"\n    ),\n]",
+        "detail": "categories.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "categories.urls",
+        "description": "categories.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"category/<int:category_id>/\", category_products, name=\"category_products\"),\n    path(\n        \"condition/<int:condition_id>/\", condition_products, name=\"condition_products\"\n    ),\n]",
+        "detail": "categories.urls",
+        "documentation": {}
+    },
+    {
+        "label": "category_products",
+        "kind": 2,
+        "importPath": "categories.views",
+        "description": "categories.views",
+        "peekOfCode": "def category_products(request, category_id):\n    category = Category.objects.get(id=category_id)\n    products = Product.objects.filter(category=category)\n    context = {\"category\": category, \"products\": products}\n    return render(request, \"category_products.html\", context)\ndef condition_products(request, condition_id):\n    condition = Condition.objects.get(id=condition_id)\n    products = Product.objects.filter(condition=condition)\n    context = {\"condition\": condition, \"products\": products}\n    return render(request, \"condition_products.html\", context)",
+        "detail": "categories.views",
+        "documentation": {}
+    },
+    {
+        "label": "condition_products",
+        "kind": 2,
+        "importPath": "categories.views",
+        "description": "categories.views",
+        "peekOfCode": "def condition_products(request, condition_id):\n    condition = Condition.objects.get(id=condition_id)\n    products = Product.objects.filter(condition=condition)\n    context = {\"condition\": condition, \"products\": products}\n    return render(request, \"condition_products.html\", context)",
+        "detail": "categories.views",
         "documentation": {}
     },
     {
@@ -1412,7 +1430,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "LOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"",
+        "peekOfCode": "LOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"\nDEFAULT_PAGINATION_SIZE = 12",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1421,7 +1439,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "INTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"",
+        "peekOfCode": "INTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"\nDEFAULT_PAGINATION_SIZE = 12",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1430,7 +1448,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "TAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"",
+        "peekOfCode": "TAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"\nDEFAULT_PAGINATION_SIZE = 12",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1439,7 +1457,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "STRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"",
+        "peekOfCode": "STRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"\nDEFAULT_PAGINATION_SIZE = 12",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1448,7 +1466,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "STRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"",
+        "peekOfCode": "STRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"\nDEFAULT_PAGINATION_SIZE = 12",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1457,7 +1475,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "STRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"",
+        "peekOfCode": "STRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"\nDEFAULT_PAGINATION_SIZE = 12",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1466,7 +1484,16 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "REDIRECT_DOMAIN = \"http://127.0.0.1:8000\"",
+        "peekOfCode": "REDIRECT_DOMAIN = \"http://127.0.0.1:8000\"\nDEFAULT_PAGINATION_SIZE = 12",
+        "detail": "ecommerce.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_PAGINATION_SIZE",
+        "kind": 5,
+        "importPath": "ecommerce.settings",
+        "description": "ecommerce.settings",
+        "peekOfCode": "DEFAULT_PAGINATION_SIZE = 12",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1565,7 +1592,7 @@
         "kind": 2,
         "importPath": "payment.views",
         "description": "payment.views",
-        "peekOfCode": "def payment_successful(request):\n    stripe.api_key = settings.STRIPE_SECRET_KEY_TEST\n    checkout_session_id = request.GET.get(\"session_id\", None)\n    session = stripe.checkout.Session.retrieve(checkout_session_id)\n    customer = stripe.Customer.retrieve(session.customer)\n    user_payment = UserPayment(\n        user=request.user, checkout_id=checkout_session_id, is_successful=True\n    )\n    user_payment.save()\n    payment_history = UserPayment.objects.filter(user=request.user)",
+        "peekOfCode": "def payment_successful(request):\n    stripe.api_key = settings.STRIPE_SECRET_KEY_TEST\n    checkout_session_id = request.GET.get(\"session_id\", None)\n    session = stripe.checkout.Session.retrieve(checkout_session_id)\n    customer = stripe.Customer.retrieve(session.customer)\n    user_payment = UserPayment(\n        user=request.user, checkout_id=checkout_session_id, is_successful=True\n    )\n    user_payment.save()\n    payment_history = UserPayment.objects.filter(user=request.user, is_successful=True)",
         "detail": "payment.views",
         "documentation": {}
     },
@@ -1718,7 +1745,7 @@
         "kind": 6,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "class HomepageView(ListView):\n    model = Product\n    template_name = \"homepage.html\"\n    context_object_name = \"products\"\n    def get_queryset(self):\n        queryset = super().get_queryset()\n        search_term = self.request.GET.get(\"search_term\", \"\")\n        if search_term:\n            queryset = queryset.filter(name__icontains=search_term)\n        if not self.request.user.is_authenticated:",
+        "peekOfCode": "class HomepageView(ListView):\n    model = Product\n    template_name = \"homepage.html\"\n    context_object_name = \"products\"\n    paginate_by = settings.DEFAULT_PAGINATION_SIZE\n    def get_queryset(self):\n        queryset = super().get_queryset()\n        search_term = self.request.GET.get(\"search_term\", \"\")\n        if search_term:\n            queryset = queryset.filter(name__icontains=search_term)",
         "detail": "products.views",
         "documentation": {}
     },
@@ -1790,7 +1817,7 @@
         "kind": 2,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "def sidebar(request):\n    categories = Category.objects.all()\n    context = {\"categories\": categories}\n    return render(request, \"sidebar.html\", context)\n# def search_products(request):\n#     search_term = request.GET.get(\"search_term\", \"\")\n#     search_products = Product.objects.filter(name__icontains=search_term)\n#     return render(request, \"homepage.html\", {\"search_products\": search_products})",
+        "peekOfCode": "def sidebar(request):\n    categories = Category.objects.all()\n    context = {\"categories\": categories}\n    return render(request, \"sidebar.html\", context)",
         "detail": "products.views",
         "documentation": {}
     },

@@ -35,6 +35,10 @@ urlpatterns = [
         "",
         include("payment.urls"),
     ),
+    path(
+        "",
+        include("categories.urls"),
+    ),
     path("__reload__/", include("django_browser_reload.urls")),
     path(
         "create-checkout-session",
