@@ -15,8 +15,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404, render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.core.paginator import Paginator
 from django.conf import settings
+from .forms import CommentForm
+
+import torch
+import torchvision.models as models
+import torchvision.transforms as transforms
+from PIL import Image
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
 
 # class HomepageView(ListView):
@@ -35,6 +42,28 @@ from django.conf import settings
 #         print("All Products:", super().get_queryset())
 #         print("Filtered Products:", queryset)
 #         return queryset
+
+
+# def extract_image_features(image_path):
+#     # Load the image
+#     image = Image.open(image_path).convert("RGB")
+
+#     # Preprocess the image
+#     preprocessed_image = preprocess_input(
+#         tf.expand_dims(np.array(image.resize((224, 224))), axis=0)
+#     )
+
+#     # Load the pretrained ResNet model
+#     base_model = ResNet50(weights="imagenet", include_top=False, pooling="avg")
+
+#     # Create a new model with the base model's output as the output layer
+#     model = Model(inputs=base_model.input, outputs=base_model.output)
+
+#     # Pass the preprocessed image through the model to obtain the feature vector
+#     features = model.predict(preprocessed_image)
+
+#     # Return the feature vector representation
+#     return features
 
 
 class HomepageView(ListView):
@@ -81,14 +110,28 @@ class PostProduct(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+    # @login_required
+    # def product_detail(request, pk):
+    # product = get_object_or_404(Product, pk=pk)
+    # comment_form = CommentForm(request.POST or None, initial={"product_id": product.pk})
+    # if request.method == "POST" and comment_form.is_valid():
+    #     # Create a new Comment object
+    #     comment = Comment(
+    #         product=product,
+    #         user=request.user,
+    #         content=comment_form.cleaned_data["content"],
+    #     )
 
-from .forms import CommentForm
+    #     comment.save()
+    #     messages.success(request, "Comment posted")
+    #     comment_form = CommentForm()
 
-
-# class ProductDetailView(LoginRequiredMixin, DetailView):
-#     model = Product
-#     template_name = "product_detail.html"
-#     context_object_name = "product"
+    #     # Redirect to a success page or perform any other actions
+    # return render(
+    #     request,
+    #     "product_detail.html",
+    #     {"product": product, "comment_form": comment_form},
+    # )
 
 
 @login_required
@@ -108,11 +151,82 @@ def product_detail(request, pk):
         comment_form = CommentForm()
 
         # Redirect to a success page or perform any other actions
-    return render(
-        request,
-        "product_detail.html",
-        {"product": product, "comment_form": comment_form},
-    )
+
+    # Retrieve the clicked product details from the database
+    def get_clicked_product_details(product_id):
+        product = get_object_or_404(Product, id=product_id)
+        # Retrieve relevant details of the clicked product
+        return product
+
+    # Extract features from the clicked product's image
+    def extract_features_from_image(image):
+        # Preprocess the image (resize, normalize, etc.) to match the model's input requirements
+        preprocess = transforms.Compose(
+            [
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+                transforms.Normalize(
+                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+                ),
+            ]
+        )
+        image = preprocess(image)
+        image = image.unsqueeze(0)
+        # Pass the preprocessed image through the feature extraction layer of your pretrained model
+        feature_vector = model(image)
+        feature_vector = feature_vector.detach().numpy()
+        return feature_vector
+
+    # Calculate similarity and recommend similar products
+    def recommend_similar_products(clicked_product_id, top_n=5):
+        clicked_product = get_clicked_product_details(clicked_product_id)
+        clicked_product_image = Image.open(clicked_product.product_image.path).convert(
+            "RGB"
+        )
+        clicked_product_features = extract_features_from_image(clicked_product_image)
+
+        # Retrieve all products except the clicked product
+        all_products = Product.objects.exclude(id=clicked_product_id)
+
+        # Calculate similarity scores for each product
+        similarity_scores = []
+        for product in all_products:
+            product_image = Image.open(product.product_image.path).convert("RGB")
+            product_features = extract_features_from_image(product_image)
+
+            # Reshape the feature vectors to 2D arrays
+            clicked_product_features_2d = clicked_product_features.reshape(1, -1)
+            product_features_2d = product_features.reshape(1, -1)
+
+            # Calculate similarity using cosine similarity or other appropriate metric
+            similarity = cosine_similarity(
+                clicked_product_features_2d, product_features_2d
+            )[0][0]
+            similarity_scores.append((product, similarity))
+
+        # Sort products based on similarity scores in descending order
+        similarity_scores.sort(key=lambda x: x[1], reverse=True)
+
+        # Select the top N products with the highest similarity scores as recommendations
+        top_similar_products = [product for product, _ in similarity_scores[:top_n]]
+
+        return top_similar_products
+
+    # PyTorch model initialization
+    model = models.vgg16(pretrained=True)
+    model = model.features
+    model.eval()
+
+    # Recommend similar products
+    similar_products = recommend_similar_products(pk)
+
+    context = {
+        "product": product,
+        "comment_form": comment_form,
+        "similar_products": similar_products,
+    }
+
+    return render(request, "product_detail.html", context)
 
 
 class ProductEditView(LoginRequiredMixin, UpdateView):

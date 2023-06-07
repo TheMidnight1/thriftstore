@@ -90,6 +90,7 @@
             <h1 class="text-xl font-bold sm:text-2xl">{{product.name}}</h1>
 
             <p class="text-sm">Highest Rated Product</p>
+            <p>{{product.user}}</p>
 
             <div class="-ms-0.5 flex">
               <svg
@@ -676,6 +677,13 @@
     </div>
   </div>
 </section>
+<h1>
+  {% for similar_product in similar_products   %}
+    <h1>
+      {{similar_product.name}}
+    </h1>
+  {% endfor %}
+</h1>
 
 <!-- Javascript code -->
 
