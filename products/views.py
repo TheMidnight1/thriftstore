@@ -178,7 +178,7 @@ def product_detail(request, pk):
         return feature_vector
 
     # Calculate similarity and recommend similar products
-    def recommend_similar_products(clicked_product_id, top_n=5):
+    def recommend_similar_products(clicked_product_id, top_n=4):
         clicked_product = get_clicked_product_details(clicked_product_id)
         clicked_product_image = Image.open(clicked_product.product_image.path).convert(
             "RGB"

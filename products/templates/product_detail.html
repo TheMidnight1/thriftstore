@@ -41,45 +41,7 @@
             >
               {{product.name}}
             </div>
-          </div>
-
-          <div class="slide relative">
-            <img
-              class="w-full h-[300px] object-cover"
-              src="https://www.kindacode.com/wp-content/uploads/2022/07/flower-2.jpeg"
-            />
-            <div
-              class="absolute bottom-0 w-full px-5 py-3 bg-black/40 text-center text-white"
-            >
-              Flower Two Caption
-            </div>
-          </div>
-
-          <div class="slide relative">
-            <img
-              class="w-full h-[300px] object-cover"
-              src="https://www.kindacode.com/wp-content/uploads/2022/07/flower-3.jpeg"
-            />
-            <div
-              class="absolute bottom-0 w-full px-5 py-3 bg-black/40 text-center text-white"
-            >
-              Flower Three Caption
-            </div>
-          </div>
-
-          <!-- The previous button -->
-          <a
-            class="absolute left-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlide(-1)"
-            >❮</a
-          >
-
-          <!-- The next button -->
-          <a
-            class="absolute right-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlide(1)"
-            >❯</a
-          >
+          </div>          
         </div>
         <br />
       </div>
@@ -224,47 +186,55 @@
     >
       <div class="product-specification flex content-center mx-auto m-4">
         <div>
-          <h2 class="text-lg">Specifications of {{product.name}}</h2>
+          <h2 class="text-lg">Description of {{product.name}}</h2>
         </div>
       </div>
-      <div class="specifications flex justify-around">
-        <div class="first-row flex flex-col">
-          <div class="brand mb-4">
-            <p class="text-gray-500">Brand</p>
-            <p>{{product.brand}}</p>
-          </div>
-          <div class="display-size mb-4">
-            <p class="text-gray-500">Display size</p>
-            <p>15.4</p>
-          </div>
-          <div class="ram mb-4">
-            <p class="text-gray-500">Ram</p>
-            <p>8gb</p>
-          </div>
-
-          <div class="processor mb-4">
-            <p class="text-gray-500">Processor</p>
-            <p>M1</p>
-          </div>
-        </div>
-        <div class="second-row flex flex-col">
-          <div class="sku">
-            <p class="text-gray-500">SKU</p>
-            <p>Sku</p>
-          </div>
-          <div class="operating-system mb-4">
-            <p class="text-gray-500">Operating System</p>
-            <p>MacOs</p>
-          </div>
-
-          <div class="storage-capacity mb-4">
-            <p class="text-gray-500">Storage Capacity</p>
-            <p>256GB</p>
-          </div>
-        </div>
+      <div class="specifications flex justify-around p-8">
+        {{product.description}}
       </div>
     </div>
+     {% comment %} Recommended Product {% endcomment %}
+<h2 class="text-xl font-bold sm:text-2xl mt-8 mb-5">Recommended Products</h2>
+
+<div
+class="mt-6 grid grid-cols-1 gap-x-6 gap-y-
+10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+>
+
+{% for similar_product in similar_products   %}
+
+<div class="group relative">
+<a href="{% url 'products:productdetail' pk=product.pk %}">
+  <div
+    class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden rounded-md group-hover:opacity-75"
+  >
+    <div class="w-full h-full">
+      <img
+        src="{{ similar_product.product_image.url }}"
+        alt="{{ similar_product.name }}"
+        class="object-scale-down"
+      />
+    </div>
+  </div>
+  <div class="mt-4 flex justify-between">
+    <div>
+      <h3 class="text-sm text-gray-700">
+        <a href="{% url 'products:productdetail' pk=product.pk %}">
+          <span aria-hidden="true" class="absolute inset-0"></span>
+          {{ similar_product.name }}
+        </a>
+      </h3>
+      <p class="mt-1 text-sm text-gray-500">{{ similar_product.condition }}</p>
+    </div>
+    <p class="text-sm font-medium text-gray-900">
+      Rs {{ similar_product.price }}
+    </p>
+  </div>
+</a>
+</div>
+{% endfor %}
     
+</div>
     <section class="bg-white">
       <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <h2 class="text-xl font-bold sm:text-2xl">Customer Reviews</h2>
@@ -624,7 +594,7 @@
         </div>
       </div>
     </section>
-
+         
     {% comment %} Comment Section {% endcomment %}
     <div class="relative mx-auto max-w-screen-xl px-4 py-8 bg-white">
       <h3 class="font-bold">Comments</h3>
@@ -676,15 +646,15 @@
       </div>
       
     </div>
+
+
+  
+        
+      
   </div>
+
 </section>
-<h1>
-  {% for similar_product in similar_products   %}
-    <h1>
-      {{similar_product.name}}
-    </h1>
-  {% endfor %}
-</h1>
+
 
 <!-- Javascript code -->
 
