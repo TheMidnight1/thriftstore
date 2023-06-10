@@ -20,6 +20,7 @@ class Product(models.Model):
         upload_to="images/",
         default="images/default.jpg",
     )
+    quantity = models.IntegerField(default=1)  # Add quantity field with default value 1
 
     def __str__(self):
         return self.name

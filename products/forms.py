@@ -17,6 +17,7 @@ class ProductForm(forms.ModelForm):
             "price",
             "manufactured_date",
             "product_image",
+            "quantity",
         ]
         widgets = {
             "category": forms.Select(
@@ -55,6 +56,11 @@ class ProductForm(forms.ModelForm):
                 }
             ),
             "product_image": forms.ClearableFileInput(
+                attrs={
+                    "class": "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                }
+            ),
+            "quantity": forms.NumberInput(
                 attrs={
                     "class": "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
                 }

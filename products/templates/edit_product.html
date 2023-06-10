@@ -73,6 +73,14 @@
         >
         {{ form.product_image }}
       </div>
+      <div>
+        <label
+          for="{{ form.product_image.id_for_label }}"
+          class="block text-gray-700 font-bold mb-2"
+          >Quantity:</label
+        >
+        {{ form.quantity }}
+      </div>
       <button
         type="submit"
         class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"

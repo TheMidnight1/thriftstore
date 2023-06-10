@@ -29,6 +29,75 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         return context
 
 
+# @login_required(login_url="login")
+# def product_page(request, product_id):
+#     stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
+
+#     try:
+#         product = Product.objects.get(id=product_id)
+
+#     except Product.DoesNotExist:
+#         raise Http404("Product does not exist")
+
+#     if request.method == "POST":
+#         checkout_session = stripe.checkout.Session.create(
+#             payment_method_types=["card"],
+#             line_items=[
+#                 {
+#                     "price_data": {
+#                         "currency": "usd",
+#                         "unit_amount": int(product.price * 100),
+#                         "product_data": {
+#                             "name": product.name,
+#                             "description": product.description,
+#                         },
+#                     },
+#                     "quantity": 1,
+#                 },
+#             ],
+#             mode="payment",
+#             customer_creation="always",
+#             success_url=settings.REDIRECT_DOMAIN
+#             + f"/payment_successful?session_id={{CHECKOUT_SESSION_ID}}&product_id={product.id}",
+#             cancel_url=settings.REDIRECT_DOMAIN + "/payment_cancelled",
+#         )
+
+#         # Create UserPayment instance and save it to the database
+#         user_payment = UserPayment.objects.create(
+#             user=request.user,
+#             checkout_id=checkout_session.id,
+#         )
+#         user_payment.products.add(product)
+
+#         return redirect(checkout_session.url, code=303)
+
+#     return render(request, "checkout.html", {"product": product})
+
+
+# @login_required
+# def payment_successful(request):
+#     stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
+#     checkout_session_id = request.GET.get("session_id", None)
+#     session = stripe.checkout.Session.retrieve(checkout_session_id)
+#     customer = stripe.Customer.retrieve(session.customer)
+#     user_payment = UserPayment(
+#         user=request.user, checkout_id=checkout_session_id, is_successful=True
+#     )
+#     user_payment.save()
+#     payment_history = UserPayment.objects.filter(user=request.user, is_successful=True)
+#     products = payment_history.values_list("products__name", flat=True)
+#     print(payment_history)
+#     return render(
+#         request,
+#         "payment_successful.html",
+#         {
+#             "customer": customer,
+#             "payment_history": payment_history,
+#             "products": products,
+#         },
+#     )
+
+
 @login_required(login_url="login")
 def product_page(request, product_id):
     stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
@@ -78,8 +147,18 @@ def product_page(request, product_id):
 def payment_successful(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY_TEST
     checkout_session_id = request.GET.get("session_id", None)
+    product_id = request.GET.get("product_id", None)
     session = stripe.checkout.Session.retrieve(checkout_session_id)
     customer = stripe.Customer.retrieve(session.customer)
+
+    try:
+        product = Product.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        raise Http404("Product does not exist")
+
+    product.quantity -= 1
+    product.save()
+
     user_payment = UserPayment(
         user=request.user, checkout_id=checkout_session_id, is_successful=True
     )

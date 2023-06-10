@@ -1,6 +1,6 @@
 import stripe
 from django import forms
-
+from django.db.models import Q
 from django.views import View
 from .forms import CommentForm
 from django.urls import reverse
@@ -102,6 +102,7 @@ class PostProduct(LoginRequiredMixin, CreateView):
         "price",
         "manufactured_date",
         "product_image",
+        "quantity",
     ]
     success_url = reverse_lazy("products:homepage")
     template_name = "post_products.html"
@@ -149,8 +150,6 @@ def product_detail(request, pk):
         comment.save()
         messages.success(request, "Comment posted")
         comment_form = CommentForm()
-
-        # Redirect to a success page or perform any other actions
 
     # Retrieve the clicked product details from the database
     def get_clicked_product_details(product_id):
@@ -241,6 +240,7 @@ class ProductEditView(LoginRequiredMixin, UpdateView):
         "price",
         "manufactured_date",
         "product_image",
+        "quantity",
     ]
     success_url = reverse_lazy("useraccount:userprofile")
 

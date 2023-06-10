@@ -41,7 +41,7 @@
             >
               {{product.name}}
             </div>
-          </div>          
+          </div>
         </div>
         <br />
       </div>
@@ -134,11 +134,21 @@
 -->
 
               <div>
-                <p class="my-4">Quantity</p>
+               
+                <p>
+                  {% if product.quantity == 0 %}
+                    <p>The product is out of stock</p>
+                    {% else %}
+                    <p class="my-4">Quantity</p>
+                    {{product.quantity}} available
+
+                  {% endif %}
+
+                </p>
                 <div class="flex items-center gap-1 my-3">
                   <button
                     type="button"
-                    class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+                    class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75 decrease-quantity"
                   >
                     &minus;
                   </button>
@@ -147,12 +157,14 @@
                     type="number"
                     id="Quantity"
                     value="1"
+                    min="{{product.quantity}}"
+                    max="{{product.quantity}}"
                     class="h-10 w-24 rounded border-gray-200 sm:text-sm"
                   />
 
                   <button
                     type="button"
-                    class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
+                    class="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75 increase-quantity"
                   >
                     &plus;
                   </button>
@@ -161,6 +173,7 @@
             </div>
           </div>
         </form>
+        {% if product.quantity > 0 %}
         <div class="flex gap-2 mt-2 mb-6">
           <a href="{% url 'payment:checkout' product_id=product.id %}">
             <button
@@ -178,6 +191,7 @@
             Add to Cart
           </button>
         </div>
+        {% endif %}
       </div>
     </div>
 
@@ -193,48 +207,52 @@
         {{product.description}}
       </div>
     </div>
-     {% comment %} Recommended Product {% endcomment %}
-<h2 class="text-xl font-bold sm:text-2xl mt-8 mb-5">Recommended Products</h2>
+    {% comment %} Recommended Product {% endcomment %}
+    <h2 class="text-xl font-bold sm:text-2xl mt-8 mb-5">
+      Recommended Products
+    </h2>
 
-<div
-class="mt-6 grid grid-cols-1 gap-x-6 gap-y-
-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
->
+    <div
+      class="mt-6 grid grid-cols-1 gap-x-6 gap-y- 10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+    >
+      {% for similar_product in similar_products %}
 
-{% for similar_product in similar_products   %}
-
-<div class="group relative">
-<a href="{% url 'products:productdetail' pk=product.pk %}">
-  <div
-    class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden rounded-md group-hover:opacity-75"
-  >
-    <div class="w-full h-full">
-      <img
-        src="{{ similar_product.product_image.url }}"
-        alt="{{ similar_product.name }}"
-        class="object-scale-down"
-      />
-    </div>
-  </div>
-  <div class="mt-4 flex justify-between">
-    <div>
-      <h3 class="text-sm text-gray-700">
+      <div class="group relative">
         <a href="{% url 'products:productdetail' pk=product.pk %}">
-          <span aria-hidden="true" class="absolute inset-0"></span>
-          {{ similar_product.name }}
+          <div
+            class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden rounded-md group-hover:opacity-75"
+          >
+            <div class="w-full h-full">
+              <img
+                src="{{ similar_product.product_image.url }}"
+                alt="{{ similar_product.name }}"
+                class="object-scale-down"
+              />
+            </div>
+          </div>
+          <div class="mt-4 flex justify-between">
+            <div>
+              <h3 class="text-sm text-gray-700">
+                <a href="{% url 'products:productdetail' pk=product.pk %}">
+                  <span aria-hidden="true" class="absolute inset-0"></span>
+                  {{ similar_product.name }}
+                </a>
+              </h3>
+              <p class="mt-1 text-sm text-gray-500">
+                {{ similar_product.condition }}
+              </p>
+            </div>
+            <p class="text-sm font-medium text-gray-900">
+              Rs {{ similar_product.price }}
+            </p>
+          </div>
+          <div>
+            <p>{{accuracy}}</p>
+          </div>
         </a>
-      </h3>
-      <p class="mt-1 text-sm text-gray-500">{{ similar_product.condition }}</p>
+      </div>
+      {% endfor %}
     </div>
-    <p class="text-sm font-medium text-gray-900">
-      Rs {{ similar_product.price }}
-    </p>
-  </div>
-</a>
-</div>
-{% endfor %}
-    
-</div>
     <section class="bg-white">
       <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <h2 class="text-xl font-bold sm:text-2xl">Customer Reviews</h2>
@@ -594,7 +612,7 @@ class="mt-6 grid grid-cols-1 gap-x-6 gap-y-
         </div>
       </div>
     </section>
-         
+
     {% comment %} Comment Section {% endcomment %}
     <div class="relative mx-auto max-w-screen-xl px-4 py-8 bg-white">
       <h3 class="font-bold">Comments</h3>
@@ -611,17 +629,16 @@ class="mt-6 grid grid-cols-1 gap-x-6 gap-y-
             </div>
             <div class="date">{{ comment.created_at|date:"F d, Y" }}</div>
           </div>
-          <p class="text-gray-600 mt-2 comment-content">{{ comment.content }}</p>
-          
+          <p class="text-gray-600 mt-2 comment-content">
+            {{ comment.content }}
+          </p>
 
-          {% comment %} Edit buttons of comment {% endcomment %}
-
-
-
-          {% comment %} Delete buttons of comment {% endcomment %} 
           {% if request.user == comment.user %}
 
-          <form method="post" action="{% url 'products:delete_comment' comment_id=comment.id%}">
+          <form
+            method="post"
+            action="{% url 'products:delete_comment' comment_id=comment.id%}"
+          >
             {% csrf_token %}
             <button type="submit">Delete</button>
           </form>
@@ -637,24 +654,20 @@ class="mt-6 grid grid-cols-1 gap-x-6 gap-y-
         <form method="post" action="">
           {% csrf_token %}
           <div class="mb-4">
-            {{ comment_form.content.label_tag }}
-            {{ comment_form.content }}
+            {{ comment_form.content.label_tag }} {{ comment_form.content }}
           </div>
           {{ comment_form.product_id }}
-          <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Submit</button>
+          <button
+            type="submit"
+            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          >
+            Submit
+          </button>
         </form>
       </div>
-      
     </div>
-
-
-  
-        
-      
   </div>
-
 </section>
-
 
 <!-- Javascript code -->
 
@@ -706,6 +719,20 @@ class="mt-6 grid grid-cols-1 gap-x-6 gap-y-
     dots[slideIndex - 1].classList.add("bg-yellow-500");
   }
 
- 
+  document.addEventListener("DOMContentLoaded", function () {
+    const quantityInput = document.getElementById("Quantity");
+    const decreaseButton = document.querySelector(".decrease-quantity");
+    const increaseButton = document.querySelector(".increase-quantity");
+
+    decreaseButton.addEventListener("click", function () {
+      if (quantityInput.value > 1) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+      }
+    });
+
+    increaseButton.addEventListener("click", function () {
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+  });
 </script>
 {% endblock maincontent %}
