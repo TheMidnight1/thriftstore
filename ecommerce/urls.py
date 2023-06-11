@@ -39,6 +39,10 @@ urlpatterns = [
         "",
         include("categories.urls"),
     ),
+    path(
+        "",
+        include("thriftAdmin.urls"),
+    ),
     path("__reload__/", include("django_browser_reload.urls")),
     path(
         "create-checkout-session",

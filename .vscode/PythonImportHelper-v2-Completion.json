@@ -160,6 +160,14 @@
         "documentation": {}
     },
     {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -256,11 +264,11 @@
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
         "isExtraImport": true,
-        "detail": "django.apps",
+        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -293,6 +301,30 @@
         "description": "django.apps",
         "isExtraImport": true,
         "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -400,6 +432,14 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "reverse_lazy",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -481,6 +521,22 @@
     },
     {
         "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
@@ -731,6 +787,14 @@
         "documentation": {}
     },
     {
+        "label": "User",
+        "importPath": "useraccount.models",
+        "description": "useraccount.models",
+        "isExtraImport": true,
+        "detail": "useraccount.models",
+        "documentation": {}
+    },
+    {
         "label": "receiver",
         "importPath": "django.dispatch",
         "description": "django.dispatch",
@@ -900,6 +964,14 @@
         "documentation": {}
     },
     {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
         "label": "Condition",
         "importPath": "categories.models",
         "description": "categories.models",
@@ -1016,46 +1088,11 @@
         "documentation": {}
     },
     {
-        "label": "django.contrib.auth.models",
-        "kind": 6,
+        "label": "AuthenticationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
         "isExtraImport": true,
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "AbstractUser",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "django.contrib.auth.validators",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.contrib.auth.validators",
-        "description": "django.contrib.auth.validators",
-        "detail": "django.contrib.auth.validators",
-        "documentation": {}
-    },
-    {
-        "label": "django.utils.timezone",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.utils.timezone",
-        "description": "django.utils.timezone",
-        "detail": "django.utils.timezone",
-        "documentation": {}
-    },
-    {
-        "label": "UserAdmin",
-        "importPath": "django.contrib.auth.admin",
-        "description": "django.contrib.auth.admin",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.admin",
+        "detail": "django.contrib.auth.forms",
         "documentation": {}
     },
     {
@@ -1096,6 +1133,81 @@
         "description": "django.contrib.auth.forms",
         "isExtraImport": true,
         "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "LoginView",
+        "importPath": "django.contrib.auth.views",
+        "description": "django.contrib.auth.views",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.views",
+        "documentation": {}
+    },
+    {
+        "label": "LogoutView",
+        "importPath": "django.contrib.auth.views",
+        "description": "django.contrib.auth.views",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.views",
+        "documentation": {}
+    },
+    {
+        "label": "LoginView",
+        "importPath": "django.contrib.auth.views",
+        "description": "django.contrib.auth.views",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.views",
+        "documentation": {}
+    },
+    {
+        "label": "PasswordChangeView",
+        "importPath": "django.contrib.auth.views",
+        "description": "django.contrib.auth.views",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.views",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.validators",
+        "description": "django.contrib.auth.validators",
+        "detail": "django.contrib.auth.validators",
+        "documentation": {}
+    },
+    {
+        "label": "django.utils.timezone",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "UserAdmin",
+        "importPath": "django.contrib.auth.admin",
+        "description": "django.contrib.auth.admin",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.admin",
         "documentation": {}
     },
     {
@@ -1152,30 +1264,6 @@
         "description": "rest_framework",
         "isExtraImport": true,
         "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "LogoutView",
-        "importPath": "django.contrib.auth.views",
-        "description": "django.contrib.auth.views",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.views",
-        "documentation": {}
-    },
-    {
-        "label": "LoginView",
-        "importPath": "django.contrib.auth.views",
-        "description": "django.contrib.auth.views",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.views",
-        "documentation": {}
-    },
-    {
-        "label": "PasswordChangeView",
-        "importPath": "django.contrib.auth.views",
-        "description": "django.contrib.auth.views",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.views",
         "documentation": {}
     },
     {
@@ -1905,6 +1993,60 @@
         "description": "theme.apps",
         "peekOfCode": "class ThemeConfig(AppConfig):\n    name = 'theme'",
         "detail": "theme.apps",
+        "documentation": {}
+    },
+    {
+        "label": "ThriftadminConfig",
+        "kind": 6,
+        "importPath": "thriftAdmin.apps",
+        "description": "thriftAdmin.apps",
+        "peekOfCode": "class ThriftadminConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'thriftAdmin'",
+        "detail": "thriftAdmin.apps",
+        "documentation": {}
+    },
+    {
+        "label": "LoginForm",
+        "kind": 6,
+        "importPath": "thriftAdmin.forms",
+        "description": "thriftAdmin.forms",
+        "peekOfCode": "class LoginForm(AuthenticationForm):\n    username = forms.CharField(\n        max_length=254,\n        widget=forms.TextInput(\n            attrs={\n                \"name\": \"username\",\n                \"class\": \"w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm\",\n                \"autofocus\": True,\n            }\n        ),",
+        "detail": "thriftAdmin.forms",
+        "documentation": {}
+    },
+    {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "thriftAdmin.urls",
+        "description": "thriftAdmin.urls",
+        "peekOfCode": "app_name = \"thriftAdmin\"\nurlpatterns = [\n    path(\"admin_login/\", admin_login.as_view(), name=\"admin_login\"),\n    path(\"admin_homepage/\", admin_homepage, name=\"admin_homepage\"),\n]",
+        "detail": "thriftAdmin.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "thriftAdmin.urls",
+        "description": "thriftAdmin.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"admin_login/\", admin_login.as_view(), name=\"admin_login\"),\n    path(\"admin_homepage/\", admin_homepage, name=\"admin_homepage\"),\n]",
+        "detail": "thriftAdmin.urls",
+        "documentation": {}
+    },
+    {
+        "label": "admin_login",
+        "kind": 6,
+        "importPath": "thriftAdmin.views",
+        "description": "thriftAdmin.views",
+        "peekOfCode": "class admin_login(LoginView):\n    form_class = LoginForm\n    template_name = \"admin_login.html\"\ndef admin_homepage(request):\n    return render(request, \"admin_homepage.html\")",
+        "detail": "thriftAdmin.views",
+        "documentation": {}
+    },
+    {
+        "label": "admin_homepage",
+        "kind": 2,
+        "importPath": "thriftAdmin.views",
+        "description": "thriftAdmin.views",
+        "peekOfCode": "def admin_homepage(request):\n    return render(request, \"admin_homepage.html\")",
+        "detail": "thriftAdmin.views",
         "documentation": {}
     },
     {
