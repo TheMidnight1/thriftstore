@@ -1,9 +1,13 @@
+import json
+import torch
 import stripe
-from django import forms
-from django.db.models import Q
+import numpy as np
+from PIL import Image
 from django.views import View
 from .forms import CommentForm
 from django.urls import reverse
+from django.db.models import Q
+from django.conf import settings
 from django.contrib import messages
 from django.http import JsonResponse
 from .models import Product, Comment
@@ -11,59 +15,13 @@ from django.http import JsonResponse
 from django.urls import reverse_lazy
 from categories.models import Category
 from django.views.generic import ListView
-from django.contrib.auth.decorators import login_required
+from .models import Product, FeatureVector
+import torchvision.transforms as transforms
+from sklearn.metrics.pairwise import cosine_similarity
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404, render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.conf import settings
-from .forms import CommentForm
-
-import torch
-import torchvision.models as models
-import torchvision.transforms as transforms
-from PIL import Image
-from sklearn.metrics.pairwise import cosine_similarity
-import numpy as np
-
-
-# class HomepageView(ListView):
-#     model = Product
-#     template_name = "homepage.html"
-#     context_object_name = "products"
-
-#     def get_queryset(self):
-#         if not self.request.user.is_authenticated:
-#             # Return all products if user is not logged in
-#             queryset = super().get_queryset()
-#         else:
-#             # Exclude products posted by the current user
-#             queryset = super().get_queryset().exclude(user=self.request.user)
-#         print("Current User:", self.request.user)
-#         print("All Products:", super().get_queryset())
-#         print("Filtered Products:", queryset)
-#         return queryset
-
-
-# def extract_image_features(image_path):
-#     # Load the image
-#     image = Image.open(image_path).convert("RGB")
-
-#     # Preprocess the image
-#     preprocessed_image = preprocess_input(
-#         tf.expand_dims(np.array(image.resize((224, 224))), axis=0)
-#     )
-
-#     # Load the pretrained ResNet model
-#     base_model = ResNet50(weights="imagenet", include_top=False, pooling="avg")
-
-#     # Create a new model with the base model's output as the output layer
-#     model = Model(inputs=base_model.input, outputs=base_model.output)
-
-#     # Pass the preprocessed image through the model to obtain the feature vector
-#     features = model.predict(preprocessed_image)
-
-#     # Return the feature vector representation
-#     return features
 
 
 class HomepageView(ListView):
@@ -111,34 +69,13 @@ class PostProduct(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    # @login_required
-    # def product_detail(request, pk):
-    # product = get_object_or_404(Product, pk=pk)
-    # comment_form = CommentForm(request.POST or None, initial={"product_id": product.pk})
-    # if request.method == "POST" and comment_form.is_valid():
-    #     # Create a new Comment object
-    #     comment = Comment(
-    #         product=product,
-    #         user=request.user,
-    #         content=comment_form.cleaned_data["content"],
-    #     )
-
-    #     comment.save()
-    #     messages.success(request, "Comment posted")
-    #     comment_form = CommentForm()
-
-    #     # Redirect to a success page or perform any other actions
-    # return render(
-    #     request,
-    #     "product_detail.html",
-    #     {"product": product, "comment_form": comment_form},
-    # )
-
 
 @login_required
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
+    test_product = product
     comment_form = CommentForm(request.POST or None, initial={"product_id": product.pk})
+
     if request.method == "POST" and comment_form.is_valid():
         # Create a new Comment object
         comment = Comment(
@@ -146,43 +83,22 @@ def product_detail(request, pk):
             user=request.user,
             content=comment_form.cleaned_data["content"],
         )
-
         comment.save()
         messages.success(request, "Comment posted")
         comment_form = CommentForm()
 
-    # Retrieve the clicked product details from the database
-    def get_clicked_product_details(product_id):
-        product = get_object_or_404(Product, id=product_id)
-        # Retrieve relevant details of the clicked product
-        return product
-
-    # Extract features from the clicked product's image
-    def extract_features_from_image(image):
-        # Preprocess the image (resize, normalize, etc.) to match the model's input requirements
-        preprocess = transforms.Compose(
-            [
-                transforms.Resize((224, 224)),
-                transforms.ToTensor(),
-                transforms.Normalize(
-                    mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
-                ),
-            ]
-        )
-        image = preprocess(image)
-        image = image.unsqueeze(0)
-        # Pass the preprocessed image through the feature extraction layer of your pretrained model
-        feature_vector = model(image)
-        feature_vector = feature_vector.detach().numpy()
-        return feature_vector
-
     # Calculate similarity and recommend similar products
     def recommend_similar_products(clicked_product_id, top_n=4):
-        clicked_product = get_clicked_product_details(clicked_product_id)
-        clicked_product_image = Image.open(clicked_product.product_image.path).convert(
-            "RGB"
+        clicked_product = test_product
+        clicked_product_feature_vector = FeatureVector.objects.get(
+            product=clicked_product
         )
-        clicked_product_features = extract_features_from_image(clicked_product_image)
+        clicked_product_feature_vector_list = json.loads(
+            clicked_product_feature_vector.feature_vector
+        )
+        clicked_product_feature_vector_array = np.array(
+            clicked_product_feature_vector_list
+        )
 
         # Retrieve all products except the clicked product
         all_products = Product.objects.exclude(id=clicked_product_id)
@@ -190,17 +106,17 @@ def product_detail(request, pk):
         # Calculate similarity scores for each product
         similarity_scores = []
         for product in all_products:
-            product_image = Image.open(product.product_image.path).convert("RGB")
-            product_features = extract_features_from_image(product_image)
+            product_feature_vector = FeatureVector.objects.get(product=product)
+            product_feature_vector_list = json.loads(
+                product_feature_vector.feature_vector
+            )
+            product_feature_vector_array = np.array(product_feature_vector_list)
 
-            # Reshape the feature vectors to 2D arrays
-            clicked_product_features_2d = clicked_product_features.reshape(1, -1)
-            product_features_2d = product_features.reshape(1, -1)
-
-            # Calculate similarity using cosine similarity or other appropriate metric
             similarity = cosine_similarity(
-                clicked_product_features_2d, product_features_2d
+                [clicked_product_feature_vector_array],
+                [product_feature_vector_array],
             )[0][0]
+
             similarity_scores.append((product, similarity))
 
         # Sort products based on similarity scores in descending order
@@ -210,11 +126,6 @@ def product_detail(request, pk):
         top_similar_products = [product for product, _ in similarity_scores[:top_n]]
 
         return top_similar_products
-
-    # PyTorch model initialization
-    model = models.vgg16(pretrained=True)
-    model = model.features
-    model.eval()
 
     # Recommend similar products
     similar_products = recommend_similar_products(pk)
@@ -314,3 +225,63 @@ def sidebar(request):
     categories = Category.objects.all()
     context = {"categories": categories}
     return render(request, "sidebar.html", context)
+
+
+# THIS IS THE CODE TO EXTRACT EXISITING PRODUCT FEATURES
+from PIL import Image
+import torchvision.transforms as transforms
+import torch
+import numpy as np
+import json
+
+from products.models import Product, FeatureVector
+
+
+def extract_features_from_image(image_path):
+    # Load the image and apply necessary transformations
+    image = Image.open(image_path).convert("RGB")
+    transform = transforms.Compose(
+        [
+            transforms.Resize((224, 224)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ]
+    )
+    image = transform(image).unsqueeze(0)
+
+    # Load the pre-trained model
+    model = torch.hub.load("pytorch/vision", "resnet18", pretrained=True)
+    model.eval()
+
+    # Extract the features
+    with torch.no_grad():
+        features = model(image).squeeze().numpy().tolist()
+
+    return features
+
+
+# Code to extract features for existing products and store them in FeatureVector
+def create_feature_vectors():
+    # Retrieve all products
+    products = Product.objects.all()
+
+    # Iterate over the products
+    for product in products:
+        # Check if feature vector already exists for the product
+        if FeatureVector.objects.filter(product=product).exists():
+            continue  # Skip if feature vector already exists
+
+        # Extract features from the image
+        feature_vector = extract_features_from_image(product.product_image.path)
+
+        # Create a new FeatureVector object
+        feature_vector_obj, created = FeatureVector.objects.get_or_create(
+            product=product, defaults={"feature_vector": json.dumps(feature_vector)}
+        )
+
+        # Save the FeatureVector object
+        feature_vector_obj.save()
+
+
+# Call the create_feature_vectors function to extract features for existing products
+create_feature_vectors()

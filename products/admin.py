@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.forms import FileInput
-from .models import Comment, Product
+from .models import Comment, FeatureVector, Product
 from django.db import models
 from django.forms import ClearableFileInput
 
@@ -14,3 +14,5 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 
 admin.site.register(Comment)
+
+admin.site.register(FeatureVector)

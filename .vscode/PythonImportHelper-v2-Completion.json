@@ -144,6 +144,70 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -584,6 +648,134 @@
         "documentation": {}
     },
     {
+        "label": "FeatureVector",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "FeatureVector",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "View",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "TemplateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "TemplateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "ListView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "CreateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateView",
+        "importPath": "django.views.generic",
+        "description": "django.views.generic",
+        "isExtraImport": true,
+        "detail": "django.views.generic",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "InvalidOperation",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -690,70 +882,6 @@
         "documentation": {}
     },
     {
-        "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "TemplateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "TemplateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "CreateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "UpdateView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -768,6 +896,14 @@
         "importPath": "django.db.models.deletion",
         "description": "django.db.models.deletion",
         "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "useraccount.models",
+        "description": "useraccount.models",
+        "isExtraImport": true,
+        "detail": "useraccount.models",
         "documentation": {}
     },
     {
@@ -825,14 +961,6 @@
         "description": "datetime",
         "isExtraImport": true,
         "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "Decimal",
-        "importPath": "decimal",
-        "description": "decimal",
-        "isExtraImport": true,
-        "detail": "decimal",
         "documentation": {}
     },
     {
@@ -964,11 +1092,19 @@
         "documentation": {}
     },
     {
-        "label": "forms",
-        "importPath": "django",
-        "description": "django",
+        "label": "Condition",
+        "importPath": "categories.models",
+        "description": "categories.models",
         "isExtraImport": true,
-        "detail": "django",
+        "detail": "categories.models",
+        "documentation": {}
+    },
+    {
+        "label": "Category",
+        "importPath": "categories.models",
+        "description": "categories.models",
+        "isExtraImport": true,
+        "detail": "categories.models",
         "documentation": {}
     },
     {
@@ -996,11 +1132,54 @@
         "documentation": {}
     },
     {
-        "label": "Q",
-        "importPath": "django.db.models",
-        "description": "django.db.models",
+        "label": "json",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "django.db.models",
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
         "documentation": {}
     },
     {
@@ -1009,6 +1188,31 @@
         "description": "django.views",
         "isExtraImport": true,
         "detail": "django.views",
+        "documentation": {}
+    },
+    {
+        "label": "Q",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "torchvision.transforms",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torchvision.transforms",
+        "description": "torchvision.transforms",
+        "detail": "torchvision.transforms",
+        "documentation": {}
+    },
+    {
+        "label": "cosine_similarity",
+        "importPath": "sklearn.metrics.pairwise",
+        "description": "sklearn.metrics.pairwise",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics.pairwise",
         "documentation": {}
     },
     {
@@ -1033,58 +1237,6 @@
         "description": "django.views.generic.edit",
         "isExtraImport": true,
         "detail": "django.views.generic.edit",
-        "documentation": {}
-    },
-    {
-        "label": "torch",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "torch",
-        "description": "torch",
-        "detail": "torch",
-        "documentation": {}
-    },
-    {
-        "label": "torchvision.models",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "torchvision.models",
-        "description": "torchvision.models",
-        "detail": "torchvision.models",
-        "documentation": {}
-    },
-    {
-        "label": "torchvision.transforms",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "torchvision.transforms",
-        "description": "torchvision.transforms",
-        "detail": "torchvision.transforms",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "cosine_similarity",
-        "importPath": "sklearn.metrics.pairwise",
-        "description": "sklearn.metrics.pairwise",
-        "isExtraImport": true,
-        "detail": "sklearn.metrics.pairwise",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -1267,6 +1419,22 @@
         "documentation": {}
     },
     {
+        "label": "transforms",
+        "importPath": "torchvision",
+        "description": "torchvision",
+        "isExtraImport": true,
+        "detail": "torchvision",
+        "documentation": {}
+    },
+    {
+        "label": "vgg16",
+        "importPath": "torchvision.models",
+        "description": "torchvision.models",
+        "isExtraImport": true,
+        "detail": "torchvision.models",
+        "documentation": {}
+    },
+    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
@@ -1334,7 +1502,7 @@
         "kind": 5,
         "importPath": "categories.urls",
         "description": "categories.urls",
-        "peekOfCode": "app_name = \"categories\"\nurlpatterns = [\n    path(\"category/<int:category_id>/\", category_products, name=\"category_products\"),\n    path(\n        \"condition/<int:condition_id>/\", condition_products, name=\"condition_products\"\n    ),\n]",
+        "peekOfCode": "app_name = \"categories\"\nurlpatterns = [\n    path(\"category/<int:category_id>/\", category_products, name=\"category_products\"),\n    path(\n        \"condition/<int:condition_id>/\", condition_products, name=\"condition_products\"\n    ),\n    path(\n        \"filtered-products/\", FilteredProductsView.as_view(), name=\"filtered_products\"\n    ),\n]",
         "detail": "categories.urls",
         "documentation": {}
     },
@@ -1343,8 +1511,17 @@
         "kind": 5,
         "importPath": "categories.urls",
         "description": "categories.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"category/<int:category_id>/\", category_products, name=\"category_products\"),\n    path(\n        \"condition/<int:condition_id>/\", condition_products, name=\"condition_products\"\n    ),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"category/<int:category_id>/\", category_products, name=\"category_products\"),\n    path(\n        \"condition/<int:condition_id>/\", condition_products, name=\"condition_products\"\n    ),\n    path(\n        \"filtered-products/\", FilteredProductsView.as_view(), name=\"filtered_products\"\n    ),\n]",
         "detail": "categories.urls",
+        "documentation": {}
+    },
+    {
+        "label": "FilteredProductsView",
+        "kind": 6,
+        "importPath": "categories.views",
+        "description": "categories.views",
+        "peekOfCode": "class FilteredProductsView(View):\n    template_name = \"filtered_products.html\"\n    def get(self, request):\n        category_id = request.GET.get(\"category\")\n        condition_id = request.GET.get(\"condition\")\n        min_price = request.GET.get(\"min_price\")\n        max_price = request.GET.get(\"max_price\")\n        try:\n            min_price = Decimal(min_price)\n        except (TypeError, ValueError, InvalidOperation):",
+        "detail": "categories.views",
         "documentation": {}
     },
     {
@@ -1361,7 +1538,7 @@
         "kind": 2,
         "importPath": "categories.views",
         "description": "categories.views",
-        "peekOfCode": "def condition_products(request, condition_id):\n    condition = Condition.objects.get(id=condition_id)\n    products = Product.objects.filter(condition=condition)\n    context = {\"condition\": condition, \"products\": products}\n    return render(request, \"condition_products.html\", context)",
+        "peekOfCode": "def condition_products(request, condition_id):\n    condition = Condition.objects.get(id=condition_id)\n    products = Product.objects.filter(condition=condition)\n    context = {\"condition\": condition, \"products\": products}\n    return render(request, \"condition_products.html\", context)\nclass FilteredProductsView(View):\n    template_name = \"filtered_products.html\"\n    def get(self, request):\n        category_id = request.GET.get(\"category\")\n        condition_id = request.GET.get(\"condition\")",
         "detail": "categories.views",
         "documentation": {}
     },
@@ -1730,7 +1907,7 @@
         "kind": 6,
         "importPath": "payment.views",
         "description": "payment.views",
-        "peekOfCode": "class CheckoutView(LoginRequiredMixin, TemplateView):\n    model = Product\n    template_name = \"checkout.html\"\n    context_object_name = \"product\"\n    def get_context_data(self, **kwargs):\n        context = super().get_context_data(**kwargs)\n        product_id = self.kwargs.get(\"product_id\")\n        context[\"product\"] = get_object_or_404(Product, id=product_id)\n        return context\n# @login_required(login_url=\"login\")",
+        "peekOfCode": "class CheckoutView(LoginRequiredMixin, TemplateView):\n    model = Product\n    template_name = \"checkout.html\"\n    context_object_name = \"product\"\n    def get_context_data(self, **kwargs):\n        context = super().get_context_data(**kwargs)\n        product_id = self.kwargs.get(\"product_id\")\n        context[\"product\"] = get_object_or_404(Product, id=product_id)\n        return context\n@login_required(login_url=\"login\")",
         "detail": "payment.views",
         "documentation": {}
     },
@@ -1834,11 +2011,47 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0007_featurevector",
+        "description": "products.migrations.0007_featurevector",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0006_product_quantity'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='FeatureVector',\n            fields=[\n                ('product', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='products.product')),\n                ('feature_vector', models.TextField()),",
+        "detail": "products.migrations.0007_featurevector",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0008_product_feature_vector",
+        "description": "products.migrations.0008_product_feature_vector",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0007_featurevector'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='product',\n            name='feature_vector',\n            field=models.TextField(blank=True, null=True),\n        ),",
+        "detail": "products.migrations.0008_product_feature_vector",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0009_delete_featurevector",
+        "description": "products.migrations.0009_delete_featurevector",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0008_product_feature_vector'),\n    ]\n    operations = [\n        migrations.DeleteModel(\n            name='FeatureVector',\n        ),\n    ]",
+        "detail": "products.migrations.0009_delete_featurevector",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0010_featurevector",
+        "description": "products.migrations.0010_featurevector",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0009_delete_featurevector'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='FeatureVector',\n            fields=[\n                ('product', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='products.product')),\n                ('feature_vector', models.TextField()),",
+        "detail": "products.migrations.0010_featurevector",
+        "documentation": {}
+    },
+    {
         "label": "ProductAdmin",
         "kind": 6,
         "importPath": "products.admin",
         "description": "products.admin",
-        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    formfield_overrides = {\n        models.BinaryField: {\"widget\": ClearableFileInput(attrs={\"multiple\": True})},\n    }\nadmin.site.register(Product, ProductAdmin)\nadmin.site.register(Comment)",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    formfield_overrides = {\n        models.BinaryField: {\"widget\": ClearableFileInput(attrs={\"multiple\": True})},\n    }\nadmin.site.register(Product, ProductAdmin)\nadmin.site.register(Comment)\nadmin.site.register(FeatureVector)",
         "detail": "products.admin",
         "documentation": {}
     },
@@ -1875,6 +2088,15 @@
         "importPath": "products.models",
         "description": "products.models",
         "peekOfCode": "class Product(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    category = models.ForeignKey(Category, on_delete=models.CASCADE)\n    condition = models.ForeignKey(Condition, on_delete=models.CASCADE)\n    name = models.CharField(max_length=100)\n    brand = models.CharField(max_length=100, null=True, blank=True)\n    description = models.TextField()\n    price = models.DecimalField(max_digits=10, decimal_places=2)\n    manufactured_date = models.DateField(null=True, blank=True)\n    created_at = models.DateTimeField(auto_now_add=True)",
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "FeatureVector",
+        "kind": 6,
+        "importPath": "products.models",
+        "description": "products.models",
+        "peekOfCode": "class FeatureVector(models.Model):\n    product = models.OneToOneField(Product, on_delete=models.CASCADE, primary_key=True)\n    feature_vector = models.TextField()\n    def __str__(self):\n        return str(self.product)\nclass Comment(models.Model):\n    product = models.ForeignKey(\n        Product, related_name=\"comments\", on_delete=models.CASCADE\n    )\n    user = models.ForeignKey(User, on_delete=models.CASCADE)",
         "detail": "products.models",
         "documentation": {}
     },
@@ -1955,7 +2177,7 @@
         "kind": 2,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "def product_detail(request, pk):\n    product = get_object_or_404(Product, pk=pk)\n    comment_form = CommentForm(request.POST or None, initial={\"product_id\": product.pk})\n    if request.method == \"POST\" and comment_form.is_valid():\n        # Create a new Comment object\n        comment = Comment(\n            product=product,\n            user=request.user,\n            content=comment_form.cleaned_data[\"content\"],\n        )",
+        "peekOfCode": "def product_detail(request, pk):\n    product = get_object_or_404(Product, pk=pk)\n    test_product = product\n    comment_form = CommentForm(request.POST or None, initial={\"product_id\": product.pk})\n    if request.method == \"POST\" and comment_form.is_valid():\n        # Create a new Comment object\n        comment = Comment(\n            product=product,\n            user=request.user,\n            content=comment_form.cleaned_data[\"content\"],",
         "detail": "products.views",
         "documentation": {}
     },
@@ -1982,7 +2204,25 @@
         "kind": 2,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "def sidebar(request):\n    categories = Category.objects.all()\n    context = {\"categories\": categories}\n    return render(request, \"sidebar.html\", context)",
+        "peekOfCode": "def sidebar(request):\n    categories = Category.objects.all()\n    context = {\"categories\": categories}\n    return render(request, \"sidebar.html\", context)\n# THIS IS THE CODE TO EXTRACT EXISITING PRODUCT FEATURES\nfrom PIL import Image\nimport torchvision.transforms as transforms\nimport torch\nimport numpy as np\nimport json",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "extract_features_from_image",
+        "kind": 2,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "def extract_features_from_image(image_path):\n    # Load the image and apply necessary transformations\n    image = Image.open(image_path).convert(\"RGB\")\n    transform = transforms.Compose(\n        [\n            transforms.Resize((224, 224)),\n            transforms.ToTensor(),\n            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n        ]\n    )",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "create_feature_vectors",
+        "kind": 2,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "def create_feature_vectors():\n    # Retrieve all products\n    products = Product.objects.all()\n    # Iterate over the products\n    for product in products:\n        # Check if feature vector already exists for the product\n        if FeatureVector.objects.filter(product=product).exists():\n            continue  # Skip if feature vector already exists\n        # Extract features from the image\n        feature_vector = extract_features_from_image(product.product_image.path)",
         "detail": "products.views",
         "documentation": {}
     },
@@ -2254,6 +2494,24 @@
         "description": "useraccount.views",
         "peekOfCode": "class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):\n    template_name = \"change_password.html\"\n    form_class = ChangePasswordForm\n    context_object_name = \"form\"\n    success_url = reverse_lazy(\"useraccount:edit_profile\")",
         "detail": "useraccount.views",
+        "documentation": {}
+    },
+    {
+        "label": "extract_features_from_image",
+        "kind": 2,
+        "importPath": "create_feature_vectors",
+        "description": "create_feature_vectors",
+        "peekOfCode": "def extract_features_from_image(image):\n    preprocess = transforms.Compose(\n        [\n            transforms.Resize((224, 224)),\n            transforms.ToTensor(),\n            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n        ]\n    )\n    image = preprocess(image)\n    image = image.unsqueeze(0)",
+        "detail": "create_feature_vectors",
+        "documentation": {}
+    },
+    {
+        "label": "create_feature_vectors",
+        "kind": 2,
+        "importPath": "create_feature_vectors",
+        "description": "create_feature_vectors",
+        "peekOfCode": "def create_feature_vectors():\n    products = Product.objects.all()\n    for product in products:\n        if not hasattr(product, \"feature_vector\"):\n            if product.product_image:\n                image = Image.open(product.product_image.path).convert(\"RGB\")\n                feature_vector = extract_features_from_image(image)\n                feature_vector_str = \",\".join(map(str, feature_vector.flatten()))\n                feature_vector_obj, created = FeatureVector.objects.get_or_create(\n                    product=product",
+        "detail": "create_feature_vectors",
         "documentation": {}
     },
     {

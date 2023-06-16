@@ -1,6 +1,9 @@
 from django.db import models
 from useraccount.models import User
 from categories.models import Condition, Category
+from django.db import models
+from useraccount.models import User
+from categories.models import Condition, Category
 
 
 class Product(models.Model):
@@ -21,9 +24,18 @@ class Product(models.Model):
         default="images/default.jpg",
     )
     quantity = models.IntegerField(default=1)  # Add quantity field with default value 1
+    feature_vector = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+
+class FeatureVector(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, primary_key=True)
+    feature_vector = models.TextField()
+
+    def __str__(self):
+        return str(self.product)
 
 
 class Comment(models.Model):

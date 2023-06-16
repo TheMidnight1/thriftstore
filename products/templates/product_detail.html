@@ -31,20 +31,15 @@
     <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2 bg-white">
       <div class="grid grid-cols-2 gap-4 md:grid-cols-1 my-6">
         <div class="relative w-[400px] mx-auto">
-          <div class="slide relative">
-            <img
-              class="w-full h-[300px] object-full"
-              src="{{product.product_image.url}}"
-            />
-            <div
-              class="absolute bottom-0 w-full px-5 py-3 bg-black/40 text-center text-white"
-            >
-              {{product.name}}
+          <div class="slide relative overflow-hidden rounded-md shadow-lg">
+            <img class="w-full h-full object-cover" src="{{product.product_image.url}}" alt="{{product.name}}" />
+            <div class="absolute bottom-0 left-0 w-full px-5 py-3 bg-gradient-to-t from-black to-transparent text-white">
+              <h2 class="text-xl font-bold">{{product.name}}</h2>
             </div>
           </div>
         </div>
-        <br />
       </div>
+      
 
       <div class="sticky top-0">
         <div class="mt-8 flex justify-between">
@@ -212,47 +207,28 @@
       Recommended Products
     </h2>
 
-    <div
-      class="mt-6 grid grid-cols-1 gap-x-6 gap-y- 10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
-    >
+    <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
       {% for similar_product in similar_products %}
-
       <div class="group relative">
         <a href="{% url 'products:productdetail' pk=product.pk %}">
-          <div
-            class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden rounded-md group-hover:opacity-75"
-          >
-            <div class="w-full h-full">
-              <img
-                src="{{ similar_product.product_image.url }}"
-                alt="{{ similar_product.name }}"
-                class="object-scale-down"
-              />
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <div class="aspect-w-1 aspect-h-1 bg-gray-200">
+              <img src="{{ similar_product.product_image.url }}" alt="{{ similar_product.name }}" class="object-cover">
             </div>
-          </div>
-          <div class="mt-4 flex justify-between">
-            <div>
-              <h3 class="text-sm text-gray-700">
-                <a href="{% url 'products:productdetail' pk=product.pk %}">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  {{ similar_product.name }}
-                </a>
-              </h3>
-              <p class="mt-1 text-sm text-gray-500">
-                {{ similar_product.condition }}
-              </p>
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-gray-900">{{ similar_product.name }}</h3>
+              <p class="mt-2 text-sm text-gray-500">{{ similar_product.condition }}</p>
+              <div class="flex justify-between items-center mt-4">
+                <p class="text-lg font-medium text-gray-900">Rs {{ similar_product.price }}</p>
+                <p class="text-sm font-medium text-gray-600">{{ accuracy }}</p>
+              </div>
             </div>
-            <p class="text-sm font-medium text-gray-900">
-              Rs {{ similar_product.price }}
-            </p>
-          </div>
-          <div>
-            <p>{{accuracy}}</p>
           </div>
         </a>
       </div>
       {% endfor %}
     </div>
+    
     <section class="bg-white">
       <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <h2 class="text-xl font-bold sm:text-2xl">Customer Reviews</h2>
@@ -617,7 +593,8 @@
     <div class="relative mx-auto max-w-screen-xl px-4 py-8 bg-white">
       <h3 class="font-bold">Comments</h3>
       <div class="flex flex-col">
-        {% if product.comments.all %} {% for comment in product.comments.all %}
+        {% if product.comments.all %}
+        {% for comment in product.comments.all %}
         <div class="border rounded-md p-3 ml-3 my-3">
           <div class="flex gap-4">
             <div class="flex gap-3 items-center">
@@ -632,23 +609,50 @@
           <p class="text-gray-600 mt-2 comment-content">
             {{ comment.content }}
           </p>
-
+    
           {% if request.user == comment.user %}
-
           <form
             method="post"
-            action="{% url 'products:delete_comment' comment_id=comment.id%}"
+            action="{% url 'products:delete_comment' comment_id=comment.id %}"
           >
             {% csrf_token %}
             <button type="submit">Delete</button>
           </form>
           {% endif %}
+    
+          <div class="replies">
+            {% for reply in comment.replies.all %}
+            <div class="border rounded-md p-3 ml-6 mt-3">
+              <div class="flex gap-4">
+                <div class="flex gap-3 items-center">
+                  <img
+                    src="{{ reply.user.image.url }}"
+                    class="object-cover w-8 h-8 rounded-full border-2 border-emerald-400 shadow-emerald-400"
+                  />
+                  <h3 class="font-bold">{{ reply.user.get_full_name }}</h3>
+                </div>
+                <div class="date">{{ reply.created_at|date:"F d, Y" }}</div>
+              </div>
+              <p class="text-gray-600 mt-2 comment-content">{{ reply.content }}</p>
+            </div>
+            {% endfor %}
+          </div>
+    
+          <div class="reply-form">
+            <h4 class="text-lg font-bold my-2">Reply to Comment</h4>
+            <form method="post" action="{% url 'products:reply_to_comment' comment_id=comment.id %}">
+              {% csrf_token %}
+              <textarea name="content" rows="3" class="w-full rounded-md my-2"></textarea>
+              <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Submit Reply</button>
+            </form>
+          </div>
         </div>
-        {% endfor %} {% else %}
+        {% endfor %}
+        {% else %}
         <h3>No comments yet</h3>
         {% endif %}
       </div>
-
+    
       <div class="add-comment">
         <h2 class="text-2xl font-bold mb-4">Add a Comment</h2>
         <form method="post" action="">
@@ -666,6 +670,7 @@
         </form>
       </div>
     </div>
+    
   </div>
 </section>
 

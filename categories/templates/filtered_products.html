@@ -1,0 +1,41 @@
+{% extends "base_site.html" %} {% block maincontent %}
+<div class="container mx-auto py-6">
+  <h1 class="text-2xl font-bold mb-4">Filtered Products</h1>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+  >
+    {% for product in products %}
+    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+      <div class="relative">
+        <img
+          src="{{ product.product_image.url }}"
+          alt="{{ product.name }}"
+          class="w-full h-48 object-cover"
+        />
+      </div>
+      <div class="p-4">
+        <h2 class="text-lg font-semibold">{{ product.name }}</h2>
+        <div class="flex items-center mt-2">
+          <p class="text-gray-700 font-bold">${{ product.price }}</p>
+          <p class="text-xs ml-2 line-through text-gray-400">
+            ${{ product.original_price }}
+          </p>
+        </div>
+        <p class="text-gray-500 text-sm">Condition: {{ product.condition }}</p>
+        <p class="text-gray-500 text-sm">
+          Posted by: {{ product.user.username }}
+        </p>
+        <div class="mt-4 flex justify-end">
+          <a
+            href="{% url 'products:productdetail' pk=product.pk %}"
+            class="text-blue-500 hover:text-blue-600"
+            >View Details</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
