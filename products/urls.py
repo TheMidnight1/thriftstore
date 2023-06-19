@@ -24,7 +24,6 @@ from .views import (
     ProductDeleteView,
     product_detail,
     delete_comment,
-    # search_products,
 )
 
 app_name = "products"

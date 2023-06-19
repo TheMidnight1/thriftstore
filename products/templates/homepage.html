@@ -1,71 +1,53 @@
 {% extends 'base_site.html' %} {% block maincontent %}
 
-<div class="bg-white">
-  <div
-    class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
-  >
-    <div
-      class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
-    >
-      {% if products %} {% for product in products %}
-      <div class="group relative">
-        <a href="{% url 'products:productdetail' pk=product.pk %}">
-          <div
-            class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden rounded-md group-hover:opacity-75"
-          >
-            <div class="w-full h-full">
-              <img
-                src="{{ product.product_image.url }}"
-                alt="{{ product.name }}"
-                class="object-scale-down"
-              />
-            </div>
+<div class="bg-white rounded-md shadow-lg p-6">
+  <div class="container mx-auto max-w-6xl">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {% if products %}
+        {% for product in products %}
+          <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg">
+            <a href="{% url 'products:productdetail' pk=product.pk %}">
+              <div class="aspect-w-1 aspect-h-1 bg-gray-200">
+                <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="object-cover h-full w-full">
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2 truncate">{{ product.name }}</h3>
+                <p class="text-sm text-gray-700 mb-4">{{ product.condition }}</p>
+                <p class="text-lg font-medium text-gray-900">Rs {{ product.price }}</p>
+              </div>
+            </a>
           </div>
-          <div class="mt-4 flex justify-between">
-            <div>
-              <h3 class="text-sm text-gray-700">
-                <a href="{% url 'products:productdetail' pk=product.pk %}">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  {{ product.name }}
-                </a>
-              </h3>
-              <p class="mt-1 text-sm text-gray-500">{{ product.condition }}</p>
-            </div>
-            <p class="text-sm font-medium text-gray-900">
-              Rs {{ product.price }}
-            </p>
-          </div>
-        </a>
-      </div>
-      {% endfor %} {% if page_obj.paginator.num_pages > 1 %}
-
-      {% endif %} {% else %} {% if search_term %}
-      <p>No products found for your search term: {{ search_term }}</p>
+        {% endfor %}
       {% else %}
-      <p>No products available.</p>
-      {% endif %} {% endif %}
+        {% if search_term %}
+          <p class="text-center text-gray-700">No products found for your search term: {{ search_term }}</p>
+        {% else %}
+          <p class="text-center text-gray-700">No products available.</p>
+        {% endif %}
+      {% endif %}
     </div>
   </div>
   <ul class="mt-8 flex justify-center space-x-4">
-    {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
-    <li>
-      <span
-        class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900"
-      >
-        {{ num }}
-      </span>
-    </li>
-    {% else %}
-    <li>
-      <a
-        href="?page={{ num }}"
-        class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
-      >
-        {{ num }}
-      </a>
-    </li>
-    {% endif %} {% endfor %}
+    {% if page_obj.paginator.num_pages > 1 %}
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <li>
+            <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-blue-500 rounded-full">
+              {{ num }}
+            </span>
+          </li>
+        {% else %}
+          <li>
+            <a href="?page={{ num }}" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 hover:text-blue-600">
+              {{ num }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </ul>
 </div>
+
+
 
 {% endblock maincontent %}

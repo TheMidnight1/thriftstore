@@ -26,6 +26,7 @@ class Product(models.Model):
     quantity = models.IntegerField(default=1)  # Add quantity field with default value 1
     feature_vector = models.TextField(null=True, blank=True)
 
+
     def __str__(self):
         return self.name
 
@@ -48,3 +49,14 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.created_at.strftime('%m/%d/%Y')}"
+
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Review by {self.user.username} for {self.product.name}"

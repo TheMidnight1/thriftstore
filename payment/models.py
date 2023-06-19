@@ -14,17 +14,7 @@ class UserPayment(models.Model):
     is_successful = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     products = models.ManyToManyField(Product)
-
-    # class UserPayment(models.Model):
-    #     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    #     checkout_id = models.CharField(max_length=255)
-    #     is_successful = models.BooleanField(default=False)
-    #     seller_name = models.CharField(max_length=255)
-    #     product_name = models.CharField(max_length=255)
-    #     product_image = models.ImageField(upload_to="product_images", blank=True, null=True)
-    #     product_price = models.DecimalField(max_digits=6, decimal_places=2)
-    #     created_at = models.DateTimeField(auto_now_add=True)
-
+    
     def __str__(self):
         return f"{self.user.username} - {self.checkout_id}"
 

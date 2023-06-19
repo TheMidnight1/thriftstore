@@ -1,4 +1,5 @@
-{% extends 'base_nav.html' %} {% block maincontent %}
+{% extends 'base_nav.html' %} 
+{% block maincontent %}
 
 <!-- CSS for the modal -->
 <style>
@@ -42,27 +43,17 @@
   <div class="max-w-5xl p-8">
     <div class="grid grid-cols-3 gap-8">
       <div class="col-span-1 flex justify-center items-center">
-        <img
-          src="{{ user.image.url }}"
-          alt="Profile Picture"
-          class="rounded-full w-48 h-48 object-cover"
-        />
+        <img src="{{ user.image.url }}" alt="Profile Picture" class="rounded-full w-48 h-48 object-cover">
       </div>
       <div class="col-span-1 pr-8 flex flex-col justify-center">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">
-          {{ user.first_name }} {{ user.last_name }}
-        </h1>
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ user.first_name }} {{ user.last_name }}</h1>
         <div class="flex items-center mb-4">
           <p class="text-gray-700">Nepal</p>
         </div>
       </div>
       <div class="col-span-1 flex justify-center items-center">
         <a href="{% url 'useraccount:edit_profile' %}">
-          <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Edit Profile
-          </button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit Profile</button>
         </a>
       </div>
     </div>
@@ -70,84 +61,41 @@
 
   <div class="flex gap-16 mt-8">
     <div>
-      <h3>Items</h3>
+      <h3 class="text-2xl font-semibold">Items</h3>
     </div>
   </div>
   <hr class="border-gray-300 w-full my-8" />
 
-  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
     {% for product in products %}
-    <div class="group">
-      <div
-        class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden rounded-md group-hover:opacity-75"
-      >
-        <img
-          src="{{ product.product_image.url }}"
-          alt="Front of men's Basic Tee in black."
-          class="h-full w-full object-center"
-        />
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden">
+        <img src="{{ product.product_image.url }}" alt="Front of men's Basic Tee in black." class="h-full w-full object-scale-down transform transition-transform group-hover:scale-105">
       </div>
-      <div class="mt-4 flex justify-between">
-        <div>
-          <h3
-            class="text-sm text-gray-700 overflow-hidden whitespace-nowrap overflow-ellipsis"
-          >
-            <a href="#" class="hover:text-gray-900">{{ product.name }}</a>
-          </h3>
-          <p class="mt-1 text-sm text-gray-500">{{ product.category }}</p>
-        </div>
-        <p class="text-sm font-medium text-gray-900">Rs {{ product.price }}</p>
-      </div>
-      <div class="buttons flex gap-3 mt-4">
-        <div class="edit-btn">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-900 truncate">
+          <a href="#" class="hover:text-gray-900">{{ product.name }}</a>
+        </h3>
+        <p class="mt-1 text-sm text-gray-500">{{ product.category }}</p>
+        <p class="mt-2 text-lg font-medium text-gray-900">Rs {{ product.price }}</p>
+        <div class="flex justify-end mt-4">
           <a href="{% url 'products:editproduct' pk=product.pk %}">
-            <button
-              class="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
-            >
-              Edit
-            </button>
+            <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Edit</button>
           </a>
+          <!-- Button to open the modal -->
+          <button class="bg-red-700 hover:bg-red-900 text-white font-bold py-1 px-2 rounded ml-2" onclick="toggleModal()">Delete</button>
         </div>
-        <!-- Button to open the modal -->
-        <button
-          class="bg-red-700 hover:bg-red-900 text-white font-bold py-1 px-2 rounded"
-          onclick="toggleModal()"
-        >
-          Delete
-        </button>
-
-        <!-- Modal container -->
-        <div
-          class="fixed z-10 inset-0 overflow-y-auto"
-          style="display: none"
-          id="myModal"
-        >
-          <div class="flex items-center justify-center min-h-screen">
-            <div
-              class="bg-white rounded-lg shadow-lg p-8"
-              style="max-width: 640px; width: 100%"
-            >
-              <h2 class="text-xl font-bold mb-4">
-                Are you sure you want to delete the product?
-              </h2>
-              <p class="mb-4">
-                Are you sure you want to delete
-                <strong>{{ product.name }}</strong>?
-              </p>
-              <a href="{% url 'products:deleteproduct' pk=product.pk %}">
-                <button
-                  class="bg-gray-500 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded"
-                >
-                  Delete
-                </button>
-              </a>
-              <button
-                class="bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                onclick="toggleModal()"
-              >
-                Close Cancel
-              </button>
-            </div>
+      </div>
+      <!-- Modal container -->
+      <div class="fixed z-10 inset-0 overflow-y-auto" style="display: none" id="myModal">
+        <div class="flex items-center justify-center min-h-screen">
+          <div class="bg-white rounded-lg shadow-lg p-8" style="max-width: 640px; width: 100%">
+            <h2 class="text-2xl font-bold mb-4">Are you sure you want to delete the product?</h2>
+            <p class="mb-4">Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
+            <a href="{% url 'products:deleteproduct' pk=product.pk %}">
+              <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+            </a>
+            <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded ml-2" onclick="toggleModal()">Cancel</button>
           </div>
         </div>
       </div>

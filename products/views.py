@@ -1,21 +1,24 @@
 import json
 import torch
 import stripe
+import time
+
 import numpy as np
 from PIL import Image
 from django.views import View
-from .forms import CommentForm
+from .forms import CommentForm,ReviewForm
 from django.urls import reverse
 from django.db.models import Q
+from payment.models import UserPayment
 from django.conf import settings
 from django.contrib import messages
+from .models import FeatureVector, Product
 from django.http import JsonResponse
 from .models import Product, Comment
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from categories.models import Category
 from django.views.generic import ListView
-from .models import Product, FeatureVector
 import torchvision.transforms as transforms
 from sklearn.metrics.pairwise import cosine_similarity
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -65,14 +68,23 @@ class PostProduct(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("products:homepage")
     template_name = "post_products.html"
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            self.object = form.save(commit=False)
+            self.object.user = self.request.user
+            self.object.save()
+            create_feature_vectors()
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 @login_required
 def product_detail(request, pk):
+    start_time = time.time()
+
     product = get_object_or_404(Product, pk=pk)
+    has_payment = UserPayment.objects.filter(user=request.user, products=product).exists()
     test_product = product
     comment_form = CommentForm(request.POST or None, initial={"product_id": product.pk})
 
@@ -86,6 +98,18 @@ def product_detail(request, pk):
         comment.save()
         messages.success(request, "Comment posted")
         comment_form = CommentForm()
+        
+    #Review 
+    if request.method == 'POST' and has_payment:
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product
+            review.user = request.user
+            review.save()
+            return redirect('product_detail', pk=pk)
+    else:
+        form = ReviewForm()
 
     # Calculate similarity and recommend similar products
     def recommend_similar_products(clicked_product_id, top_n=4):
@@ -101,7 +125,9 @@ def product_detail(request, pk):
         )
 
         # Retrieve all products except the clicked product
-        all_products = Product.objects.exclude(id=clicked_product_id)
+        # all_products = Product.objects.exclude(id=clicked_product_id)
+        all_products = Product.objects.filter(category=clicked_product.category).exclude(id=clicked_product_id)
+
 
         # Calculate similarity scores for each product
         similarity_scores = []
@@ -129,11 +155,14 @@ def product_detail(request, pk):
 
     # Recommend similar products
     similar_products = recommend_similar_products(pk)
-
+    elapsed_time = time.time() - start_time
+    print(elapsed_time)
     context = {
         "product": product,
         "comment_form": comment_form,
         "similar_products": similar_products,
+        'form': form, 
+        'has_payment': has_payment
     }
 
     return render(request, "product_detail.html", context)
@@ -187,8 +216,6 @@ class CheckoutSessionView(View):
 
 
 # DELETE COMMENT
-
-
 @login_required
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
@@ -228,13 +255,6 @@ def sidebar(request):
 
 
 # THIS IS THE CODE TO EXTRACT EXISITING PRODUCT FEATURES
-from PIL import Image
-import torchvision.transforms as transforms
-import torch
-import numpy as np
-import json
-
-from products.models import Product, FeatureVector
 
 
 def extract_features_from_image(image_path):
@@ -242,7 +262,7 @@ def extract_features_from_image(image_path):
     image = Image.open(image_path).convert("RGB")
     transform = transforms.Compose(
         [
-            transforms.Resize((224, 224)),
+            transforms.Resize((224,224)),
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ]

@@ -200,6 +200,70 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -648,22 +712,6 @@
         "documentation": {}
     },
     {
-        "label": "FeatureVector",
-        "importPath": "products.models",
-        "description": "products.models",
-        "isExtraImport": true,
-        "detail": "products.models",
-        "documentation": {}
-    },
-    {
-        "label": "Product",
-        "importPath": "products.models",
-        "description": "products.models",
-        "isExtraImport": true,
-        "detail": "products.models",
-        "documentation": {}
-    },
-    {
         "label": "Product",
         "importPath": "products.models",
         "description": "products.models",
@@ -814,6 +862,14 @@
         "isExtraImport": true,
         "importPath": "django.conf",
         "description": "django.conf",
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
         "detail": "django.conf",
         "documentation": {}
     },
@@ -1150,20 +1206,21 @@
         "documentation": {}
     },
     {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "numpy",
         "description": "numpy",
         "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
         "documentation": {}
     },
     {
@@ -1196,6 +1253,14 @@
         "description": "django.db.models",
         "isExtraImport": true,
         "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "UserPayment",
+        "importPath": "payment.models",
+        "description": "payment.models",
+        "isExtraImport": true,
+        "detail": "payment.models",
         "documentation": {}
     },
     {
@@ -1871,7 +1936,7 @@
         "kind": 6,
         "importPath": "payment.models",
         "description": "payment.models",
-        "peekOfCode": "class UserPayment(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    checkout_id = models.CharField(max_length=500)\n    is_successful = models.BooleanField(default=False)\n    created_at = models.DateTimeField(auto_now_add=True)\n    products = models.ManyToManyField(Product)\n    # class UserPayment(models.Model):\n    #     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)\n    #     checkout_id = models.CharField(max_length=255)\n    #     is_successful = models.BooleanField(default=False)",
+        "peekOfCode": "class UserPayment(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    checkout_id = models.CharField(max_length=500)\n    is_successful = models.BooleanField(default=False)\n    created_at = models.DateTimeField(auto_now_add=True)\n    products = models.ManyToManyField(Product)\n    def __str__(self):\n        return f\"{self.user.username} - {self.checkout_id}\"\n@receiver(post_save, sender=User)\ndef create_user_payment(sender, instance, created, **kwargs):",
         "detail": "payment.models",
         "documentation": {}
     },
@@ -2047,11 +2112,56 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0011_comment_parent",
+        "description": "products.migrations.0011_comment_parent",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0010_featurevector'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='comment',\n            name='parent',\n            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='replies', to='products.comment'),\n        ),",
+        "detail": "products.migrations.0011_comment_parent",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0012_remove_comment_parent",
+        "description": "products.migrations.0012_remove_comment_parent",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0011_comment_parent'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='comment',\n            name='parent',\n        ),\n    ]",
+        "detail": "products.migrations.0012_remove_comment_parent",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0013_comment_parent",
+        "description": "products.migrations.0013_comment_parent",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0012_remove_comment_parent'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='comment',\n            name='parent',\n            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='replies', to='products.comment'),\n        ),",
+        "detail": "products.migrations.0013_comment_parent",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0014_remove_comment_parent",
+        "description": "products.migrations.0014_remove_comment_parent",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('products', '0013_comment_parent'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='comment',\n            name='parent',\n        ),\n    ]",
+        "detail": "products.migrations.0014_remove_comment_parent",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "products.migrations.0015_review",
+        "description": "products.migrations.0015_review",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('products', '0014_remove_comment_parent'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Review',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "products.migrations.0015_review",
+        "documentation": {}
+    },
+    {
         "label": "ProductAdmin",
         "kind": 6,
         "importPath": "products.admin",
         "description": "products.admin",
-        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    formfield_overrides = {\n        models.BinaryField: {\"widget\": ClearableFileInput(attrs={\"multiple\": True})},\n    }\nadmin.site.register(Product, ProductAdmin)\nadmin.site.register(Comment)\nadmin.site.register(FeatureVector)",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    formfield_overrides = {\n        models.BinaryField: {\"widget\": ClearableFileInput(attrs={\"multiple\": True})},\n    }\nadmin.site.register(Product, ProductAdmin)\nadmin.site.register(Comment)\nadmin.site.register(FeatureVector)\nadmin.site.register(Review)",
         "detail": "products.admin",
         "documentation": {}
     },
@@ -2083,6 +2193,15 @@
         "documentation": {}
     },
     {
+        "label": "ReviewForm",
+        "kind": 6,
+        "importPath": "products.forms",
+        "description": "products.forms",
+        "peekOfCode": "class ReviewForm(forms.ModelForm):\n    class Meta:\n        model = Review\n        fields = ['content']\n        widgets = {\n            'content': forms.Textarea(attrs={'rows': 4,'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'}),\n        }\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.fields['content'].required = False",
+        "detail": "products.forms",
+        "documentation": {}
+    },
+    {
         "label": "Product",
         "kind": 6,
         "importPath": "products.models",
@@ -2105,7 +2224,16 @@
         "kind": 6,
         "importPath": "products.models",
         "description": "products.models",
-        "peekOfCode": "class Comment(models.Model):\n    product = models.ForeignKey(\n        Product, related_name=\"comments\", on_delete=models.CASCADE\n    )\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    content = models.TextField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"{self.user.username} - {self.created_at.strftime('%m/%d/%Y')}\"",
+        "peekOfCode": "class Comment(models.Model):\n    product = models.ForeignKey(\n        Product, related_name=\"comments\", on_delete=models.CASCADE\n    )\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    content = models.TextField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"{self.user.username} - {self.created_at.strftime('%m/%d/%Y')}\"\nclass Review(models.Model):",
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "Review",
+        "kind": 6,
+        "importPath": "products.models",
+        "description": "products.models",
+        "peekOfCode": "class Review(models.Model):\n    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    content = models.TextField(null=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"Review by {self.user.username} for {self.product.name}\"",
         "detail": "products.models",
         "documentation": {}
     },
@@ -2177,7 +2305,7 @@
         "kind": 2,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "def product_detail(request, pk):\n    product = get_object_or_404(Product, pk=pk)\n    test_product = product\n    comment_form = CommentForm(request.POST or None, initial={\"product_id\": product.pk})\n    if request.method == \"POST\" and comment_form.is_valid():\n        # Create a new Comment object\n        comment = Comment(\n            product=product,\n            user=request.user,\n            content=comment_form.cleaned_data[\"content\"],",
+        "peekOfCode": "def product_detail(request, pk):\n    start_time = time.time()\n    product = get_object_or_404(Product, pk=pk)\n    has_payment = UserPayment.objects.filter(user=request.user, products=product).exists()\n    test_product = product\n    comment_form = CommentForm(request.POST or None, initial={\"product_id\": product.pk})\n    if request.method == \"POST\" and comment_form.is_valid():\n        # Create a new Comment object\n        comment = Comment(\n            product=product,",
         "detail": "products.views",
         "documentation": {}
     },
@@ -2204,7 +2332,7 @@
         "kind": 2,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "def sidebar(request):\n    categories = Category.objects.all()\n    context = {\"categories\": categories}\n    return render(request, \"sidebar.html\", context)\n# THIS IS THE CODE TO EXTRACT EXISITING PRODUCT FEATURES\nfrom PIL import Image\nimport torchvision.transforms as transforms\nimport torch\nimport numpy as np\nimport json",
+        "peekOfCode": "def sidebar(request):\n    categories = Category.objects.all()\n    context = {\"categories\": categories}\n    return render(request, \"sidebar.html\", context)\n# THIS IS THE CODE TO EXTRACT EXISITING PRODUCT FEATURES\ndef extract_features_from_image(image_path):\n    # Load the image and apply necessary transformations\n    image = Image.open(image_path).convert(\"RGB\")\n    transform = transforms.Compose(\n        [",
         "detail": "products.views",
         "documentation": {}
     },
@@ -2213,7 +2341,7 @@
         "kind": 2,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "def extract_features_from_image(image_path):\n    # Load the image and apply necessary transformations\n    image = Image.open(image_path).convert(\"RGB\")\n    transform = transforms.Compose(\n        [\n            transforms.Resize((224, 224)),\n            transforms.ToTensor(),\n            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n        ]\n    )",
+        "peekOfCode": "def extract_features_from_image(image_path):\n    # Load the image and apply necessary transformations\n    image = Image.open(image_path).convert(\"RGB\")\n    transform = transforms.Compose(\n        [\n            transforms.Resize((224,224)),\n            transforms.ToTensor(),\n            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n        ]\n    )",
         "detail": "products.views",
         "documentation": {}
     },

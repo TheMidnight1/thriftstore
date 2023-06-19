@@ -85,6 +85,13 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
         password_form = context["password_form"]
         if password_form.is_valid():
             password_form.save()
+        
+        # Handle image upload
+        if "image" in self.request.FILES:
+            image_file = self.request.FILES["image"]
+            self.object.image = image_file
+            self.object.save()
+            
         return super().form_valid(form)
 
 
