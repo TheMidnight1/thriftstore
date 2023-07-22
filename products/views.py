@@ -3,30 +3,64 @@ import torch
 import stripe
 import time
 
+import joblib
 import numpy as np
+import pandas as pd
+
 from PIL import Image
 from django.views import View
-from .forms import CommentForm,ReviewForm
 from django.urls import reverse
 from django.db.models import Q
-from payment.models import UserPayment
 from django.conf import settings
 from django.contrib import messages
-from .models import FeatureVector, Product
-from django.http import JsonResponse
 from .models import Product, Comment
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 from django.urls import reverse_lazy
+from payment.models import UserPayment
 from categories.models import Category
+from .forms import CommentForm,ReviewForm
 from django.views.generic import ListView
+from .models import FeatureVector, Product
 import torchvision.transforms as transforms
 from sklearn.metrics.pairwise import cosine_similarity
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import redirect, get_object_or_404, render
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+import tensorflow as tf
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
 
+loaded_model = load_model('/home/midnight/Django_Class/DjangoProject/ecommerceenv/src/spam_detection_model.h5')
+ 
+# Load your dataset (replace 'spam.csv' with the path to your dataset)
+dataset = pd.read_csv('/home/midnight/Django_Class/DjangoProject/ecommerceenv/src/spam.csv', encoding='latin-1')
+dataset = dataset.drop(["Unnamed: 2", "Unnamed: 3", "Unnamed: 4"], axis=1)
+dataset = dataset.rename(columns={"v1": "label", "v2": "text"})
+dataset['label'] = dataset.label.map({'ham': 0, 'spam': 1})
+
+# Calculate the maximum number of words in a text sample
+max_seq_length = max([len(text.split()) for text in dataset['text']])
+
+# Create and fit the tokenizer
+tokenizer = tf.keras.preprocessing.text.Tokenizer()
+tokenizer.fit_on_texts(dataset['text'])
+
+
+# def check_spam(request):
+#     text1 = "Wow amazing you won the lottery congratulation"
+#     new_sequences = tokenizer.texts_to_sequences([text1])
+#     new_sequences = tf.keras.preprocessing.sequence.pad_sequences(new_sequences, maxlen=max_seq_length)
+
+#     # Make prediction using the loaded model
+#     prediction = loaded_model.predict(new_sequences)[0][0]
+#     spam_label = 'Yes' if prediction >= 0.5 else 'No'
+#     return JsonResponse({'spam': spam_label, 'probability': float(prediction), 'text': text1})
+
+    
 class HomepageView(ListView):
     model = Product
     template_name = "homepage.html"
@@ -50,8 +84,8 @@ class HomepageView(ListView):
         search_term = self.request.GET.get("search_term", "")
         context["search_term"] = search_term
         return context
-
-
+    
+    
 class PostProduct(LoginRequiredMixin, CreateView):
     model = Product
     fields = [
@@ -79,27 +113,97 @@ class PostProduct(LoginRequiredMixin, CreateView):
         else:
             return self.form_invalid(form)
 
+
+
+
+ # Calculate similarity and recommend similar products
+def recommend_similar_products(clicked_product_id, top_n=4):
+    clicked_product = get_object_or_404(Product, pk=clicked_product_id)
+    clicked_product_feature_vector = FeatureVector.objects.get(
+        product=clicked_product
+    )
+    clicked_product_feature_vector_list = json.loads(
+        clicked_product_feature_vector.feature_vector
+    )
+    clicked_product_feature_vector_array = np.array(
+        clicked_product_feature_vector_list
+    )
+
+    # Retrieve all products except the clicked product
+    # all_products = Product.objects.exclude(id=clicked_product_id)
+    all_products = Product.objects.filter(category=clicked_product.category).exclude(id=clicked_product_id)
+
+
+    # Calculate similarity scores for each product
+    similarity_scores = []
+    for product in all_products:
+        product_feature_vector = FeatureVector.objects.get(product=product)
+        product_feature_vector_list = json.loads(
+            product_feature_vector.feature_vector
+        )
+        product_feature_vector_array = np.array(product_feature_vector_list)
+
+        similarity = cosine_similarity(
+            [clicked_product_feature_vector_array],
+            [product_feature_vector_array],
+        )[0][0]
+
+        similarity_scores.append((product, similarity))
+
+    # Sort products based on similarity scores in descending order
+    similarity_scores.sort(key=lambda x: x[1], reverse=True)
+
+    # Select the top N products with the highest similarity scores as recommendations
+    top_similar_products = [product for product, _ in similarity_scores[:top_n]]
+    
+    
+    
+    return top_similar_products
+
+
 @login_required
 def product_detail(request, pk):
+    pk = pk
     start_time = time.time()
-
     product = get_object_or_404(Product, pk=pk)
     has_payment = UserPayment.objects.filter(user=request.user, products=product).exists()
     test_product = product
-    comment_form = CommentForm(request.POST or None, initial={"product_id": product.pk})
 
-    if request.method == "POST" and comment_form.is_valid():
-        # Create a new Comment object
-        comment = Comment(
-            product=product,
-            user=request.user,
-            content=comment_form.cleaned_data["content"],
-        )
-        comment.save()
-        messages.success(request, "Comment posted")
-        comment_form = CommentForm()
-        
-    #Review 
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST, initial={"product_id": product.pk})
+        if comment_form.is_valid():
+            user_input = comment_form.cleaned_data["content"]
+
+            # Tokenize and pad the comment content
+            new_sequences = tokenizer.texts_to_sequences([user_input])
+            new_sequences = pad_sequences(new_sequences, maxlen=max_seq_length)
+
+            # Make prediction using the loaded model
+            prediction = loaded_model.predict(new_sequences)[0][0]
+            print("Prediction Accuracy:", prediction)
+            spam_label = 'Yes' if prediction >= 0.5 else 'No'
+            
+            # Save the comment if not spam, otherwise show an alert
+            if spam_label == 'No':
+                # Create a new Comment object
+                comment = Comment(
+                    product=product,
+                    user=request.user,
+                    content=user_input,
+                )
+                comment.save()
+                messages.success(request, "Comment posted")
+            else:
+                messages.error(request, "Alert: This comment appears to be spam!")
+
+            return redirect('/products/' + str(pk) + '/')  # Fixed the redirect URL pattern name
+        else:
+            messages.error(request, "Invalid form data. Please check your input.")
+
+    else:
+        comment_form = CommentForm(initial={"product_id": product.pk})
+
+    # Review form handling
     if request.method == 'POST' and has_payment:
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -107,66 +211,26 @@ def product_detail(request, pk):
             review.product = product
             review.user = request.user
             review.save()
-            return redirect('product_detail', pk=pk)
+            return redirect('/products/' + str(pk) + '/')  # Fixed the redirect URL pattern name
     else:
         form = ReviewForm()
 
-    # Calculate similarity and recommend similar products
-    def recommend_similar_products(clicked_product_id, top_n=4):
-        clicked_product = test_product
-        clicked_product_feature_vector = FeatureVector.objects.get(
-            product=clicked_product
-        )
-        clicked_product_feature_vector_list = json.loads(
-            clicked_product_feature_vector.feature_vector
-        )
-        clicked_product_feature_vector_array = np.array(
-            clicked_product_feature_vector_list
-        )
-
-        # Retrieve all products except the clicked product
-        # all_products = Product.objects.exclude(id=clicked_product_id)
-        all_products = Product.objects.filter(category=clicked_product.category).exclude(id=clicked_product_id)
-
-
-        # Calculate similarity scores for each product
-        similarity_scores = []
-        for product in all_products:
-            product_feature_vector = FeatureVector.objects.get(product=product)
-            product_feature_vector_list = json.loads(
-                product_feature_vector.feature_vector
-            )
-            product_feature_vector_array = np.array(product_feature_vector_list)
-
-            similarity = cosine_similarity(
-                [clicked_product_feature_vector_array],
-                [product_feature_vector_array],
-            )[0][0]
-
-            similarity_scores.append((product, similarity))
-
-        # Sort products based on similarity scores in descending order
-        similarity_scores.sort(key=lambda x: x[1], reverse=True)
-
-        # Select the top N products with the highest similarity scores as recommendations
-        top_similar_products = [product for product, _ in similarity_scores[:top_n]]
-
-        return top_similar_products
-
     # Recommend similar products
     similar_products = recommend_similar_products(pk)
+
     elapsed_time = time.time() - start_time
     print(elapsed_time)
+
     context = {
         "product": product,
         "comment_form": comment_form,
         "similar_products": similar_products,
         'form': form, 
-        'has_payment': has_payment
+        'has_payment': has_payment,
+        'messages': messages.get_messages(request)
     }
 
     return render(request, "product_detail.html", context)
-
 
 class ProductEditView(LoginRequiredMixin, UpdateView):
     model = Product
@@ -185,18 +249,18 @@ class ProductEditView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("useraccount:userprofile")
 
 
-class ProductDeleteView(LoginRequiredMixin, DeleteView):
-    model = Product
-    template_name = "user_profile.html"
-    success_url = reverse_lazy("useraccount:userprofile")
+@login_required
+def delete_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
 
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        success_url = reverse_lazy("useraccount:userprofile")
+    product.delete()
+    return redirect(reverse_lazy("useraccount:userprofile"))
 
-        self.object.delete()
-        return redirect(success_url)
+    context = {
+        "product": product,
+    }
 
+    return render(request, "user_profile.html", context)
 
 class CheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
@@ -303,5 +367,4 @@ def create_feature_vectors():
         feature_vector_obj.save()
 
 
-# Call the create_feature_vectors function to extract features for existing products
-create_feature_vectors()
+

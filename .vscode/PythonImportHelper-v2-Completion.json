@@ -1044,7 +1044,7 @@
         "documentation": {}
     },
     {
-        "label": "JsonResponse",
+        "label": "HttpResponse",
         "importPath": "django.http",
         "description": "django.http",
         "isExtraImport": true,
@@ -1215,12 +1215,30 @@
         "documentation": {}
     },
     {
+        "label": "joblib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "joblib",
+        "description": "joblib",
+        "detail": "joblib",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "numpy",
         "description": "numpy",
         "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
         "documentation": {}
     },
     {
@@ -1297,11 +1315,60 @@
         "documentation": {}
     },
     {
-        "label": "DeleteView",
-        "importPath": "django.views.generic.edit",
-        "description": "django.views.generic.edit",
+        "label": "tensorflow",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "django.views.generic.edit",
+        "importPath": "tensorflow",
+        "description": "tensorflow",
+        "detail": "tensorflow",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "importPath": "tensorflow.keras.models",
+        "description": "tensorflow.keras.models",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras.models",
+        "documentation": {}
+    },
+    {
+        "label": "pad_sequences",
+        "importPath": "tensorflow.keras.preprocessing.sequence",
+        "description": "tensorflow.keras.preprocessing.sequence",
+        "isExtraImport": true,
+        "detail": "tensorflow.keras.preprocessing.sequence",
+        "documentation": {}
+    },
+    {
+        "label": "f1_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "precision_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "recall_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
         "documentation": {}
     },
     {
@@ -2283,15 +2350,6 @@
         "documentation": {}
     },
     {
-        "label": "ProductDeleteView",
-        "kind": 6,
-        "importPath": "products.views",
-        "description": "products.views",
-        "peekOfCode": "class ProductDeleteView(LoginRequiredMixin, DeleteView):\n    model = Product\n    template_name = \"user_profile.html\"\n    success_url = reverse_lazy(\"useraccount:userprofile\")\n    def delete(self, request, *args, **kwargs):\n        self.object = self.get_object()\n        success_url = reverse_lazy(\"useraccount:userprofile\")\n        self.object.delete()\n        return redirect(success_url)\nclass CheckoutSessionView(View):",
-        "detail": "products.views",
-        "documentation": {}
-    },
-    {
         "label": "CheckoutSessionView",
         "kind": 6,
         "importPath": "products.views",
@@ -2301,11 +2359,29 @@
         "documentation": {}
     },
     {
+        "label": "recommend_similar_products",
+        "kind": 2,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "def recommend_similar_products(clicked_product_id, top_n=4):\n    clicked_product = get_object_or_404(Product, pk=clicked_product_id)\n    clicked_product_feature_vector = FeatureVector.objects.get(\n        product=clicked_product\n    )\n    clicked_product_feature_vector_list = json.loads(\n        clicked_product_feature_vector.feature_vector\n    )\n    clicked_product_feature_vector_array = np.array(\n        clicked_product_feature_vector_list",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
         "label": "product_detail",
         "kind": 2,
         "importPath": "products.views",
         "description": "products.views",
-        "peekOfCode": "def product_detail(request, pk):\n    start_time = time.time()\n    product = get_object_or_404(Product, pk=pk)\n    has_payment = UserPayment.objects.filter(user=request.user, products=product).exists()\n    test_product = product\n    comment_form = CommentForm(request.POST or None, initial={\"product_id\": product.pk})\n    if request.method == \"POST\" and comment_form.is_valid():\n        # Create a new Comment object\n        comment = Comment(\n            product=product,",
+        "peekOfCode": "def product_detail(request, pk):\n    pk = pk\n    start_time = time.time()\n    product = get_object_or_404(Product, pk=pk)\n    has_payment = UserPayment.objects.filter(user=request.user, products=product).exists()\n    test_product = product\n    if request.method == \"POST\":\n        comment_form = CommentForm(request.POST, initial={\"product_id\": product.pk})\n        if comment_form.is_valid():\n            user_input = comment_form.cleaned_data[\"content\"]",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_product",
+        "kind": 2,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "def delete_product(request, pk):\n    product = get_object_or_404(Product, pk=pk)\n    product.delete()\n    return redirect(reverse_lazy(\"useraccount:userprofile\"))\n    context = {\n        \"product\": product,\n    }\n    return render(request, \"user_profile.html\", context)\nclass CheckoutSessionView(View):\n    def post(self, request, *args, **kwargs):",
         "detail": "products.views",
         "documentation": {}
     },
@@ -2351,6 +2427,69 @@
         "importPath": "products.views",
         "description": "products.views",
         "peekOfCode": "def create_feature_vectors():\n    # Retrieve all products\n    products = Product.objects.all()\n    # Iterate over the products\n    for product in products:\n        # Check if feature vector already exists for the product\n        if FeatureVector.objects.filter(product=product).exists():\n            continue  # Skip if feature vector already exists\n        # Extract features from the image\n        feature_vector = extract_features_from_image(product.product_image.path)",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "loaded_model",
+        "kind": 5,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "loaded_model = load_model('/home/midnight/Django_Class/DjangoProject/ecommerceenv/src/spam_detection_model.h5')\n# Load your dataset (replace 'spam.csv' with the path to your dataset)\ndataset = pd.read_csv('/home/midnight/Django_Class/DjangoProject/ecommerceenv/src/spam.csv', encoding='latin-1')\ndataset = dataset.drop([\"Unnamed: 2\", \"Unnamed: 3\", \"Unnamed: 4\"], axis=1)\ndataset = dataset.rename(columns={\"v1\": \"label\", \"v2\": \"text\"})\ndataset['label'] = dataset.label.map({'ham': 0, 'spam': 1})\n# Calculate the maximum number of words in a text sample\nmax_seq_length = max([len(text.split()) for text in dataset['text']])\n# Create and fit the tokenizer\ntokenizer = tf.keras.preprocessing.text.Tokenizer()",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "dataset = pd.read_csv('/home/midnight/Django_Class/DjangoProject/ecommerceenv/src/spam.csv', encoding='latin-1')\ndataset = dataset.drop([\"Unnamed: 2\", \"Unnamed: 3\", \"Unnamed: 4\"], axis=1)\ndataset = dataset.rename(columns={\"v1\": \"label\", \"v2\": \"text\"})\ndataset['label'] = dataset.label.map({'ham': 0, 'spam': 1})\n# Calculate the maximum number of words in a text sample\nmax_seq_length = max([len(text.split()) for text in dataset['text']])\n# Create and fit the tokenizer\ntokenizer = tf.keras.preprocessing.text.Tokenizer()\ntokenizer.fit_on_texts(dataset['text'])\n# def check_spam(request):",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "dataset = dataset.drop([\"Unnamed: 2\", \"Unnamed: 3\", \"Unnamed: 4\"], axis=1)\ndataset = dataset.rename(columns={\"v1\": \"label\", \"v2\": \"text\"})\ndataset['label'] = dataset.label.map({'ham': 0, 'spam': 1})\n# Calculate the maximum number of words in a text sample\nmax_seq_length = max([len(text.split()) for text in dataset['text']])\n# Create and fit the tokenizer\ntokenizer = tf.keras.preprocessing.text.Tokenizer()\ntokenizer.fit_on_texts(dataset['text'])\n# def check_spam(request):\n#     text1 = \"Wow amazing you won the lottery congratulation\"",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "dataset = dataset.rename(columns={\"v1\": \"label\", \"v2\": \"text\"})\ndataset['label'] = dataset.label.map({'ham': 0, 'spam': 1})\n# Calculate the maximum number of words in a text sample\nmax_seq_length = max([len(text.split()) for text in dataset['text']])\n# Create and fit the tokenizer\ntokenizer = tf.keras.preprocessing.text.Tokenizer()\ntokenizer.fit_on_texts(dataset['text'])\n# def check_spam(request):\n#     text1 = \"Wow amazing you won the lottery congratulation\"\n#     new_sequences = tokenizer.texts_to_sequences([text1])",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "dataset['label']",
+        "kind": 5,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "dataset['label'] = dataset.label.map({'ham': 0, 'spam': 1})\n# Calculate the maximum number of words in a text sample\nmax_seq_length = max([len(text.split()) for text in dataset['text']])\n# Create and fit the tokenizer\ntokenizer = tf.keras.preprocessing.text.Tokenizer()\ntokenizer.fit_on_texts(dataset['text'])\n# def check_spam(request):\n#     text1 = \"Wow amazing you won the lottery congratulation\"\n#     new_sequences = tokenizer.texts_to_sequences([text1])\n#     new_sequences = tf.keras.preprocessing.sequence.pad_sequences(new_sequences, maxlen=max_seq_length)",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "max_seq_length",
+        "kind": 5,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "max_seq_length = max([len(text.split()) for text in dataset['text']])\n# Create and fit the tokenizer\ntokenizer = tf.keras.preprocessing.text.Tokenizer()\ntokenizer.fit_on_texts(dataset['text'])\n# def check_spam(request):\n#     text1 = \"Wow amazing you won the lottery congratulation\"\n#     new_sequences = tokenizer.texts_to_sequences([text1])\n#     new_sequences = tf.keras.preprocessing.sequence.pad_sequences(new_sequences, maxlen=max_seq_length)\n#     # Make prediction using the loaded model\n#     prediction = loaded_model.predict(new_sequences)[0][0]",
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "products.views",
+        "description": "products.views",
+        "peekOfCode": "tokenizer = tf.keras.preprocessing.text.Tokenizer()\ntokenizer.fit_on_texts(dataset['text'])\n# def check_spam(request):\n#     text1 = \"Wow amazing you won the lottery congratulation\"\n#     new_sequences = tokenizer.texts_to_sequences([text1])\n#     new_sequences = tf.keras.preprocessing.sequence.pad_sequences(new_sequences, maxlen=max_seq_length)\n#     # Make prediction using the loaded model\n#     prediction = loaded_model.predict(new_sequences)[0][0]\n#     spam_label = 'Yes' if prediction >= 0.5 else 'No'\n#     return JsonResponse({'spam': spam_label, 'probability': float(prediction), 'text': text1})",
         "detail": "products.views",
         "documentation": {}
     },

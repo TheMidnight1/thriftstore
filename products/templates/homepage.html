@@ -1,31 +1,31 @@
-{% extends 'base_site.html' %} {% block maincontent %}
+{% extends 'base_site.html' %}
+{% block maincontent %}
 
-<div class="bg-white rounded-md shadow-lg p-6">
-  <div class="container mx-auto max-w-6xl">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      {% if products %}
-        {% for product in products %}
-          <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg">
-            <a href="{% url 'products:productdetail' pk=product.pk %}">
-              <div class="aspect-w-1 aspect-h-1 bg-gray-200">
-                <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="object-cover h-full w-full">
-              </div>
-              <div class="p-4">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2 truncate">{{ product.name }}</h3>
-                <p class="text-sm text-gray-700 mb-4">{{ product.condition }}</p>
-                <p class="text-lg font-medium text-gray-900">Rs {{ product.price }}</p>
-              </div>
-            </a>
+<div class="bg-white rounded-md shadow-lg p-6 mx-auto max-w-6xl">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-7">
+    {% if products %}
+      {% for product in products %}
+      <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg bg-white p-4">
+        <a href="{% url 'products:productdetail' pk=product.pk %}">
+          <div class="aspect-w-1 aspect-h-1 bg-gray-200">
+            <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="object-cover h-full w-full">
           </div>
-        {% endfor %}
+          <div class="mt-4">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2 truncate">{{ product.name }}</h3>
+            <p class="text-sm text-gray-700">{{ product.condition }}</p>
+            <p class="text-lg font-medium text-gray-900 mt-2">Rs {{ product.price }}</p>
+          </div>
+        </a>
+      </div>
+      
+      {% endfor %}
+    {% else %}
+      {% if search_term %}
+        <p class="text-center text-gray-700">No products found for your search term: {{ search_term }}</p>
       {% else %}
-        {% if search_term %}
-          <p class="text-center text-gray-700">No products found for your search term: {{ search_term }}</p>
-        {% else %}
-          <p class="text-center text-gray-700">No products available.</p>
-        {% endif %}
+        <p class="text-center text-gray-700">No products available.</p>
       {% endif %}
-    </div>
+    {% endif %}
   </div>
   <ul class="mt-8 flex justify-center space-x-4">
     {% if page_obj.paginator.num_pages > 1 %}
@@ -47,7 +47,5 @@
     {% endif %}
   </ul>
 </div>
-
-
 
 {% endblock maincontent %}

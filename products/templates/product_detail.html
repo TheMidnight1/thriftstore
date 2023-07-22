@@ -27,6 +27,9 @@
   }
 </style>
 <section>
+
+
+
   <div class="relative mx-auto max-w-screen-xl px-4 py-8">
     <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2 bg-white">
       <div class="grid grid-cols-2 gap-4 md:grid-cols-1 my-6">
@@ -92,6 +95,7 @@
                     min="{{product.quantity}}"
                     max="{{product.quantity}}"
                     class="h-10 w-24 rounded border-gray-200 sm:text-sm"
+                    disabled
                   />
 
                   <button
@@ -115,13 +119,6 @@
               Buy now
             </button>
           </a>
-
-          <button
-            type="submit"
-            class="block rounded bg-blue-400 px-5 py-3 text-xs font-medium text-white hover:bg-blue-600"
-          >
-            Add to Cart
-          </button>
         </div>
         {% endif %}
       </div>
@@ -147,7 +144,7 @@
     <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
       {% for similar_product in similar_products %}
       <div class="group relative">
-        <a href="{% url 'products:productdetail' pk=product.pk %}">
+        <a href="{% url 'products:productdetail' pk=similar_product.pk %}">
           <div class="rounded-lg overflow-hidden shadow-lg">
             <div class="aspect-w-1 aspect-h-1 bg-gray-200">
               <img src="{{ similar_product.product_image.url }}" alt="{{ similar_product.name }}" class="object-cover">
@@ -210,6 +207,24 @@
     {% comment %} Comment Section {% endcomment %}
     <div class="relative mx-auto max-w-screen-xl px-4 py-8 bg-white">
       <h3 class="font-bold">Comments</h3>
+      {% if messages %}
+    {% for message in messages %}
+        <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:text-blue-400" role="alert">
+            <span class="font-medium">
+                {{ message }}
+            </span>
+        </div>
+    {% endfor %}
+{% endif %}
+
+  {% if messages %}
+  {% for message in messages %}
+      <script>
+          // Pass the message content to the showPopup function
+          showPopup("{{ message }}");
+      </script>
+  {% endfor %}
+{% endif %}
       <div class="flex flex-col">
         {% if product.comments.all %} {% for comment in product.comments.all %}
         <div class="border rounded-md p-3 ml-3 my-3">
@@ -245,7 +260,7 @@
 
       <div class="add-comment">
         <h2 class="text-2xl font-bold mb-4">Add a Comment</h2>
-        <form method="post" action="">
+        <form method="POST" action="">
           {% csrf_token %}
           <div class="mb-4">
             {{ comment_form.content.label_tag }} {{ comment_form.content }}
@@ -294,7 +309,9 @@
       slideIndex = slides.length;
     }
 
-    // hide all slides
+    // hide all slidesFaceted Search:
+
+
     for (i = 0; i < slides.length; i++) {
       slides[i].classList.add("hidden");
     }
@@ -328,5 +345,18 @@
       quantityInput.value = parseInt(quantityInput.value) + 1;
     });
   });
+      // Function to show the popup
+      function showPopup(message) {
+        const popup = document.getElementById("popup");
+        const popupMessage = document.getElementById("popup-message");
+
+        popupMessage.innerText = message;
+        popup.classList.remove("hidden");
+
+        // Hide the popup after 3 seconds (adjust the time as needed)
+        setTimeout(function () {
+            popup.classList.add("hidden");
+        }, 3000);
+    }
 </script>
 {% endblock maincontent %}
