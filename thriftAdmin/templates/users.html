@@ -1,0 +1,83 @@
+{% extends 'admin_sidebar.html' %}
+
+{% block maincontent %}
+
+
+<div class="bg-white rounded-md shadow-lg p-6 mx-auto max-w-6xl mt-4">
+    <div class="flex-grow py-8 px-10">
+      <h1 class="text-2xl font-semibold mb-6">User List</h1>
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 text-left bg-gray-100">User id</th>
+              <th class="px-4 py-3 text-left bg-gray-100">Name</th>
+              <th class="px-4 py-3 text-left bg-gray-100">Email</th>
+              <th class="px-4 py-3 text-left bg-gray-100"> Number</th>
+              <th class="px-4 py-3 text-left bg-gray-100">Edit/Delete</th>
+
+            </tr>
+          </thead>
+          <tbody>   
+            {% for user in users %}
+            <tr
+              class="transition duration-200 ease-in-out hover:bg-gray-50 transform hover:-translate-y-1 hover:scale-105 hover:shadow-md cursor-pointer"
+            >
+              <td class="border-t px-4 py-3">{{ user.id }}</td>
+              <td class="border-t px-4 py-3">{{ user.first_name }} {{user.last_name}}</td>
+              <td class="border-t px-4 py-3">{{ user.email }}</td>
+              <td class="border-t px-4 py-3">{{ user.phone_number }}</td>
+
+              <td class="border-t px-4 py-3">Edit/Delete</td>
+
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Pagination links -->
+      <div class="mt-4">
+        <ul class="flex justify-center">
+          {% if page_obj.has_previous %}
+          <li class="mr-2">
+            <a href="?page=1" class="pagination-link">First</a>
+          </li>
+          <li class="mr-2">
+            <a
+              href="?page={{ page_obj.previous_page_number }}"
+              class="pagination-link"
+              >Previous</a
+            >
+          </li>
+          {% endif %} {% for num in page_obj.paginator.page_range %}
+          <li class="mr-2">
+            <a
+              href="?page={{ num }}"
+              class="{% if num == page_obj.number %}pagination-link-active{% else %}pagination-link{% endif %}"
+              >{{ num }}</a
+            >
+          </li>
+          {% endfor %} {% if page_obj.has_next %}
+          <li class="mr-2">
+            <a
+              href="?page={{ page_obj.next_page_number }}"
+              class="pagination-link"
+              >Next</a
+            >
+          </li>
+          <li>
+            <a
+              href="?page={{ page_obj.paginator.num_pages }}"
+              class="pagination-link"
+              >Last</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+{% endblock maincontent %}

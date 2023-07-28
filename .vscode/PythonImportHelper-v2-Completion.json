@@ -328,6 +328,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -712,6 +728,30 @@
         "documentation": {}
     },
     {
+        "label": "Comment",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "Review",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "importPath": "products.models",
+        "description": "products.models",
+        "isExtraImport": true,
+        "detail": "products.models",
+        "documentation": {}
+    },
+    {
         "label": "Product",
         "importPath": "products.models",
         "description": "products.models",
@@ -761,14 +801,6 @@
     },
     {
         "label": "ListView",
-        "importPath": "django.views.generic",
-        "description": "django.views.generic",
-        "isExtraImport": true,
-        "detail": "django.views.generic",
-        "documentation": {}
-    },
-    {
-        "label": "TemplateView",
         "importPath": "django.views.generic",
         "description": "django.views.generic",
         "isExtraImport": true,
@@ -938,6 +970,14 @@
         "documentation": {}
     },
     {
+        "label": "delete_product",
+        "importPath": "products.views",
+        "description": "products.views",
+        "isExtraImport": true,
+        "detail": "products.views",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -952,6 +992,14 @@
         "importPath": "django.db.models.deletion",
         "description": "django.db.models.deletion",
         "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "useraccount.models",
+        "description": "useraccount.models",
+        "isExtraImport": true,
+        "detail": "useraccount.models",
         "documentation": {}
     },
     {
@@ -1188,6 +1236,22 @@
         "documentation": {}
     },
     {
+        "label": "Category",
+        "importPath": "categories.models",
+        "description": "categories.models",
+        "isExtraImport": true,
+        "detail": "categories.models",
+        "documentation": {}
+    },
+    {
+        "label": "Condition",
+        "importPath": "categories.models",
+        "description": "categories.models",
+        "isExtraImport": true,
+        "detail": "categories.models",
+        "documentation": {}
+    },
+    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
@@ -1271,6 +1335,14 @@
         "description": "django.db.models",
         "isExtraImport": true,
         "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "UserPayment",
+        "importPath": "payment.models",
+        "description": "payment.models",
+        "isExtraImport": true,
+        "detail": "payment.models",
         "documentation": {}
     },
     {
@@ -1452,6 +1524,14 @@
         "documentation": {}
     },
     {
+        "label": "Paginator",
+        "importPath": "django.core.paginator",
+        "description": "django.core.paginator",
+        "isExtraImport": true,
+        "detail": "django.core.paginator",
+        "documentation": {}
+    },
+    {
         "label": "django.contrib.auth.models",
         "kind": 6,
         "isExtraImport": true,
@@ -1495,27 +1575,43 @@
         "documentation": {}
     },
     {
+        "label": "ModelBackend",
+        "importPath": "django.contrib.auth.backends",
+        "description": "django.contrib.auth.backends",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.backends",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_model",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_model",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_model",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
         "label": "RadioSelect",
         "importPath": "django.forms.widgets",
         "description": "django.forms.widgets",
         "isExtraImport": true,
         "detail": "django.forms.widgets",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_model",
-        "importPath": "django.contrib.auth",
-        "description": "django.contrib.auth",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_model",
-        "importPath": "django.contrib.auth",
-        "description": "django.contrib.auth",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth",
         "documentation": {}
     },
     {
@@ -1823,7 +1919,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "STATIC_URL = \"static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"media/\"\nMEDIA_ROOT = BASE_DIR / \"mediafiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nLOGIN_URL = \"/login/\"\nLOGIN_REDIRECT_URL = \"/\"",
+        "peekOfCode": "STATIC_URL = \"static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"media/\"\nMEDIA_ROOT = BASE_DIR / \"mediafiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nAUTHENTICATION_BACKENDS = [\n    'useraccount.custom_auth_backends.CustomUserTypeBackend', #custom backend",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1832,7 +1928,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"media/\"\nMEDIA_ROOT = BASE_DIR / \"mediafiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nLOGIN_URL = \"/login/\"\nLOGIN_REDIRECT_URL = \"/\"\nLOGOUT_URL = \"logout\"",
+        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"media/\"\nMEDIA_ROOT = BASE_DIR / \"mediafiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nAUTHENTICATION_BACKENDS = [\n    'useraccount.custom_auth_backends.CustomUserTypeBackend', #custom backend\n    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1841,7 +1937,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "MEDIA_URL = \"media/\"\nMEDIA_ROOT = BASE_DIR / \"mediafiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nLOGIN_URL = \"/login/\"\nLOGIN_REDIRECT_URL = \"/\"\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [",
+        "peekOfCode": "MEDIA_URL = \"media/\"\nMEDIA_ROOT = BASE_DIR / \"mediafiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nAUTHENTICATION_BACKENDS = [\n    'useraccount.custom_auth_backends.CustomUserTypeBackend', #custom backend\n    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend\n]",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1850,7 +1946,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "MEDIA_ROOT = BASE_DIR / \"mediafiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nLOGIN_URL = \"/login/\"\nLOGIN_REDIRECT_URL = \"/\"\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",",
+        "peekOfCode": "MEDIA_ROOT = BASE_DIR / \"mediafiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nAUTHENTICATION_BACKENDS = [\n    'useraccount.custom_auth_backends.CustomUserTypeBackend', #custom backend\n    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend\n]\nLOGOUT_URL = \"logout\"",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1859,7 +1955,7 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nLOGIN_URL = \"/login/\"\nLOGIN_REDIRECT_URL = \"/\"\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"useraccount.User\"\nAUTHENTICATION_BACKENDS = [\n    'useraccount.custom_auth_backends.CustomUserTypeBackend', #custom backend\n    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend\n]\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -1868,25 +1964,16 @@
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "AUTH_USER_MODEL = \"useraccount.User\"\nLOGIN_URL = \"/login/\"\nLOGIN_REDIRECT_URL = \"/\"\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"",
+        "peekOfCode": "AUTH_USER_MODEL = \"useraccount.User\"\nAUTHENTICATION_BACKENDS = [\n    'useraccount.custom_auth_backends.CustomUserTypeBackend', #custom backend\n    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend\n]\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
     {
-        "label": "LOGIN_URL",
+        "label": "AUTHENTICATION_BACKENDS",
         "kind": 5,
         "importPath": "ecommerce.settings",
         "description": "ecommerce.settings",
-        "peekOfCode": "LOGIN_URL = \"/login/\"\nLOGIN_REDIRECT_URL = \"/\"\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"",
-        "detail": "ecommerce.settings",
-        "documentation": {}
-    },
-    {
-        "label": "LOGIN_REDIRECT_URL",
-        "kind": 5,
-        "importPath": "ecommerce.settings",
-        "description": "ecommerce.settings",
-        "peekOfCode": "LOGIN_REDIRECT_URL = \"/\"\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"\nSTRIPE_SECRET_KEY_TEST = \"sk_test_51LAWwwLS9FlJqzn0YovxrtzxBAI7A2J5lCu6GNfdPt5ePb0IGhgxuS4j93W8XJ3BkqoiXknf276Fepoj8jdn8EWg00QwVDsxss\"\nSTRIPE_WEBHOOK_SECRET_TEST = \"\"\nREDIRECT_DOMAIN = \"http://127.0.0.1:8000\"",
+        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    'useraccount.custom_auth_backends.CustomUserTypeBackend', #custom backend\n    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend\n]\nLOGOUT_URL = \"logout\"\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nTAILWIND_APP_NAME = \"theme\"\nSTRIPE_PUBLIC_KEY_TEST = \"pk_test_51LAWwwLS9FlJqzn09u4POvHER01KqYneO32gVutNcKoiPblE84GvlV6p5wvVv2AH54ZJMWg44nYWfEw8tWgBXoIh00mz3ZSnh2\"",
         "detail": "ecommerce.settings",
         "documentation": {}
     },
@@ -2525,7 +2612,7 @@
         "kind": 5,
         "importPath": "thriftAdmin.urls",
         "description": "thriftAdmin.urls",
-        "peekOfCode": "app_name = \"thriftAdmin\"\nurlpatterns = [\n    path(\"admin_login/\", admin_login.as_view(), name=\"admin_login\"),\n    path(\"admin_homepage/\", admin_homepage, name=\"admin_homepage\"),\n]",
+        "peekOfCode": "app_name = \"thriftAdmin\"\nurlpatterns = [\n    path(\"admin_login/\", admin_login.as_view(), name=\"admin_login\"),\n    path(\"admin_homepage/\", admin_homepage, name=\"admin_homepage\"),\n    path('products/',manage_products,name=\"products\"),\n    path('conditions/',manage_condition,name=\"conditions\"),\n    path('users/',manage_users,name=\"users\"),\n    path('categories/',manage_categories,name=\"categories\"),\n]",
         "detail": "thriftAdmin.urls",
         "documentation": {}
     },
@@ -2534,7 +2621,7 @@
         "kind": 5,
         "importPath": "thriftAdmin.urls",
         "description": "thriftAdmin.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"admin_login/\", admin_login.as_view(), name=\"admin_login\"),\n    path(\"admin_homepage/\", admin_homepage, name=\"admin_homepage\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"admin_login/\", admin_login.as_view(), name=\"admin_login\"),\n    path(\"admin_homepage/\", admin_homepage, name=\"admin_homepage\"),\n    path('products/',manage_products,name=\"products\"),\n    path('conditions/',manage_condition,name=\"conditions\"),\n    path('users/',manage_users,name=\"users\"),\n    path('categories/',manage_categories,name=\"categories\"),\n]",
         "detail": "thriftAdmin.urls",
         "documentation": {}
     },
@@ -2543,7 +2630,7 @@
         "kind": 6,
         "importPath": "thriftAdmin.views",
         "description": "thriftAdmin.views",
-        "peekOfCode": "class admin_login(LoginView):\n    form_class = LoginForm\n    template_name = \"admin_login.html\"\ndef admin_homepage(request):\n    return render(request, \"admin_homepage.html\")",
+        "peekOfCode": "class admin_login(LoginView):\n    form_class = LoginForm\n    template_name = \"admin_login.html\"\ndef admin_homepage(request):\n    print(payments)\n    paginator = Paginator(users,7)\n    page_number = request.GET.get('page')\n    page_obj = paginator.get_page(page_number)\n    print(\"Page:\", page_number)\n    print(\"Page Object:\", page_obj)",
         "detail": "thriftAdmin.views",
         "documentation": {}
     },
@@ -2552,7 +2639,61 @@
         "kind": 2,
         "importPath": "thriftAdmin.views",
         "description": "thriftAdmin.views",
-        "peekOfCode": "def admin_homepage(request):\n    return render(request, \"admin_homepage.html\")",
+        "peekOfCode": "def admin_homepage(request):\n    print(payments)\n    paginator = Paginator(users,7)\n    page_number = request.GET.get('page')\n    page_obj = paginator.get_page(page_number)\n    print(\"Page:\", page_number)\n    print(\"Page Object:\", page_obj)\n    context = {\n        'products':products.count(),\n        'users':users,",
+        "detail": "thriftAdmin.views",
+        "documentation": {}
+    },
+    {
+        "label": "manage_products",
+        "kind": 2,
+        "importPath": "thriftAdmin.views",
+        "description": "thriftAdmin.views",
+        "peekOfCode": "def manage_products(request):\n    search_query = request.GET.get('search')\n    filtered_products = products\n    if search_query:\n        filtered_products = products.filter(name__icontains=search_query)\n    context = {'products': filtered_products}\n    return render(request, 'products.html', context)\n# def delete_product(request):\ndef manage_condition(request):\n    context = {'conditions': conditions}",
+        "detail": "thriftAdmin.views",
+        "documentation": {}
+    },
+    {
+        "label": "manage_condition",
+        "kind": 2,
+        "importPath": "thriftAdmin.views",
+        "description": "thriftAdmin.views",
+        "peekOfCode": "def manage_condition(request):\n    context = {'conditions': conditions}\n    print(conditions)\n    return render(request, 'condition.html', context)\ndef manage_users(request):\n    context = {'users': users}\n    return render(request, 'users.html', context)\ndef manage_categories(request):\n    context = {'categories': categories}\n    return render(request, 'categories.html', context)",
+        "detail": "thriftAdmin.views",
+        "documentation": {}
+    },
+    {
+        "label": "manage_users",
+        "kind": 2,
+        "importPath": "thriftAdmin.views",
+        "description": "thriftAdmin.views",
+        "peekOfCode": "def manage_users(request):\n    context = {'users': users}\n    return render(request, 'users.html', context)\ndef manage_categories(request):\n    context = {'categories': categories}\n    return render(request, 'categories.html', context)",
+        "detail": "thriftAdmin.views",
+        "documentation": {}
+    },
+    {
+        "label": "manage_categories",
+        "kind": 2,
+        "importPath": "thriftAdmin.views",
+        "description": "thriftAdmin.views",
+        "peekOfCode": "def manage_categories(request):\n    context = {'categories': categories}\n    return render(request, 'categories.html', context)",
+        "detail": "thriftAdmin.views",
+        "documentation": {}
+    },
+    {
+        "label": "products",
+        "kind": 5,
+        "importPath": "thriftAdmin.views",
+        "description": "thriftAdmin.views",
+        "peekOfCode": "products = Product.objects.all()\nusers  = User.objects.all()\ncategories  = Category.objects.all()\nconditions  = Condition.objects.all()\npayments = UserPayment.objects.all()\nclass admin_login(LoginView):\n    form_class = LoginForm\n    template_name = \"admin_login.html\"\ndef admin_homepage(request):\n    print(payments)",
+        "detail": "thriftAdmin.views",
+        "documentation": {}
+    },
+    {
+        "label": "payments",
+        "kind": 5,
+        "importPath": "thriftAdmin.views",
+        "description": "thriftAdmin.views",
+        "peekOfCode": "payments = UserPayment.objects.all()\nclass admin_login(LoginView):\n    form_class = LoginForm\n    template_name = \"admin_login.html\"\ndef admin_homepage(request):\n    print(payments)\n    paginator = Paginator(users,7)\n    page_number = request.GET.get('page')\n    page_obj = paginator.get_page(page_number)\n    print(\"Page:\", page_number)",
         "detail": "thriftAdmin.views",
         "documentation": {}
     },
@@ -2572,6 +2713,15 @@
         "description": "useraccount.migrations.0002_alter_user_image",
         "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('useraccount', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='user',\n            name='image',\n            field=models.ImageField(blank=True, default='images/default.jpg', null=True, upload_to='images/'),\n        ),",
         "detail": "useraccount.migrations.0002_alter_user_image",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "useraccount.migrations.0003_user_is_user",
+        "description": "useraccount.migrations.0003_user_is_user",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        (\"useraccount\", \"0002_alter_user_image\"),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name=\"user\",\n            name=\"is_user\",\n            field=models.BooleanField(default=True),\n        ),",
+        "detail": "useraccount.migrations.0003_user_is_user",
         "documentation": {}
     },
     {
@@ -2599,6 +2749,24 @@
         "description": "useraccount.apps",
         "peekOfCode": "class UseraccountConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'useraccount'",
         "detail": "useraccount.apps",
+        "documentation": {}
+    },
+    {
+        "label": "CustomUserTypeBackend",
+        "kind": 6,
+        "importPath": "useraccount.custom_auth_backends",
+        "description": "useraccount.custom_auth_backends",
+        "peekOfCode": "class CustomUserTypeBackend(ModelBackend):\n    def authenticate(self, request, username=None, password=None, **kwargs):\n        try:\n            user = User.objects.get(username=username)\n            # Check if the user is an admin\n            if user.is_admin and user.check_password(password):\n                return user\n            # If not an admin, assume the user is a regular user\n            if not user.is_admin and user.check_password(password):\n                return user",
+        "detail": "useraccount.custom_auth_backends",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 5,
+        "importPath": "useraccount.custom_auth_backends",
+        "description": "useraccount.custom_auth_backends",
+        "peekOfCode": "User = get_user_model()\nclass CustomUserTypeBackend(ModelBackend):\n    def authenticate(self, request, username=None, password=None, **kwargs):\n        try:\n            user = User.objects.get(username=username)\n            # Check if the user is an admin\n            if user.is_admin and user.check_password(password):\n                return user\n            # If not an admin, assume the user is a regular user\n            if not user.is_admin and user.check_password(password):",
+        "detail": "useraccount.custom_auth_backends",
         "documentation": {}
     },
     {
@@ -2678,7 +2846,7 @@
         "kind": 6,
         "importPath": "useraccount.models",
         "description": "useraccount.models",
-        "peekOfCode": "class User(AbstractUser):\n    phone_number = models.CharField(max_length=20, null=True, blank=True)\n    image = models.ImageField(\n        upload_to=\"images/\",\n        blank=True,\n        null=True,\n        default=\"images/default.jpg\",\n    )",
+        "peekOfCode": "class User(AbstractUser):\n    phone_number = models.CharField(max_length=20, null=True, blank=True)\n    image = models.ImageField(\n        upload_to=\"images/\",\n        blank=True,\n        null=True,\n        default=\"images/default.jpg\",\n    )\n    is_admin = models.BooleanField(default=False),\n    is_user = models.BooleanField(default=True)",
         "detail": "useraccount.models",
         "documentation": {}
     },
@@ -2714,7 +2882,7 @@
         "kind": 6,
         "importPath": "useraccount.views",
         "description": "useraccount.views",
-        "peekOfCode": "class MyRegisterView(CreateView):\n    model = User\n    form_class = UserForm\n    template_name = \"register.html\"\n    success_url = reverse_lazy(\"useraccount:login\")\nclass MyLoginView(LoginView):\n    form_class = LoginForm\n    template_name = \"login.html\"\n    def dispatch(self, request, *args, **kwargs):\n        if self.request.user.is_authenticated:  # Check if user is logged in",
+        "peekOfCode": "class MyRegisterView(CreateView):\n    model = User\n    form_class = UserForm\n    template_name = \"register.html\"\n    success_url = reverse_lazy(\"useraccount:login\")\nclass MyLoginView(LoginView):\n    template_name = \"login.html\"\n    def form_valid(self, form):\n        # Log the user in using Django's built-in authentication\n        response = super().form_valid(form)",
         "detail": "useraccount.views",
         "documentation": {}
     },
@@ -2723,7 +2891,7 @@
         "kind": 6,
         "importPath": "useraccount.views",
         "description": "useraccount.views",
-        "peekOfCode": "class MyLoginView(LoginView):\n    form_class = LoginForm\n    template_name = \"login.html\"\n    def dispatch(self, request, *args, **kwargs):\n        if self.request.user.is_authenticated:  # Check if user is logged in\n            # Redirect to homepage or any other URL\n            return redirect(\"products:homepage\")\n        else:\n            return super().dispatch(request, *args, **kwargs)\nclass UserProfile(LoginRequiredMixin, ListView):",
+        "peekOfCode": "class MyLoginView(LoginView):\n    template_name = \"login.html\"\n    def form_valid(self, form):\n        # Log the user in using Django's built-in authentication\n        response = super().form_valid(form)\n        # Redirect the user based on their role (admin or user)\n        user = self.request.user\n        print(user)\n        if user.is_superuser:\n            return redirect('thriftAdmin:admin_homepage')",
         "detail": "useraccount.views",
         "documentation": {}
     },
@@ -2759,7 +2927,16 @@
         "kind": 6,
         "importPath": "useraccount.views",
         "description": "useraccount.views",
-        "peekOfCode": "class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):\n    template_name = \"change_password.html\"\n    form_class = ChangePasswordForm\n    context_object_name = \"form\"\n    success_url = reverse_lazy(\"useraccount:edit_profile\")",
+        "peekOfCode": "class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):\n    template_name = \"change_password.html\"\n    form_class = ChangePasswordForm\n    context_object_name = \"form\"\n    success_url = reverse_lazy(\"useraccount:edit_profile\")\nUser = get_user_model()",
+        "detail": "useraccount.views",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 5,
+        "importPath": "useraccount.views",
+        "description": "useraccount.views",
+        "peekOfCode": "User = get_user_model()",
         "detail": "useraccount.views",
         "documentation": {}
     },

@@ -152,8 +152,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "useraccount.User"
 
-LOGIN_URL = "/login/"
-LOGIN_REDIRECT_URL = "/"
+AUTHENTICATION_BACKENDS = [
+    'useraccount.custom_auth_backends.CustomUserTypeBackend', #custom backend
+    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend
+]
+
 LOGOUT_URL = "logout"
 
 INTERNAL_IPS = [

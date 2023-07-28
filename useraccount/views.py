@@ -1,29 +1,15 @@
 from .models import User
-from .forms import LoginForm
 from products.models import Product
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.views.generic import  ListView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LogoutView
-from django.views.generic import TemplateView, ListView
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserForm, EditProfileForm, ChangePasswordForm
 from django.contrib.auth.views import LoginView, PasswordChangeView
 
-
-# def RegisterView(request):
-#     if request.method == "POST":
-#         form = UserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect(
-#                 "login"
-#             )  # Redirect to the homepage after successful registration
-#     else:
-#         form = UserForm()
-#     context = {"form": form}
-#     return render(request, "register.html", context)
 
 
 class MyRegisterView(CreateView):
@@ -34,16 +20,29 @@ class MyRegisterView(CreateView):
 
 
 class MyLoginView(LoginView):
-    form_class = LoginForm
     template_name = "login.html"
+    
+    def form_valid(self, form):
+        # Log the user in using Django's built-in authentication
+        response = super().form_valid(form)
 
-    def dispatch(self, request, *args, **kwargs):
-        if self.request.user.is_authenticated:  # Check if user is logged in
-            # Redirect to homepage or any other URL
-            return redirect("products:homepage")
+        # Redirect the user based on their role (admin or user)
+        user = self.request.user
+        print(user)
+        if user.is_superuser:
+            return redirect('thriftAdmin:admin_homepage')
+        
+        elif user.is_user:
+            return redirect('products:homepage')
+            
         else:
-            return super().dispatch(request, *args, **kwargs)
+            return redirect('products:homepage')
 
+        return response
+
+    def get_success_url(self):
+        # Override this method to prevent any further redirection by the LoginView
+        return self.request.path
 
 class UserProfile(LoginRequiredMixin, ListView):
     model = Product
@@ -100,3 +99,7 @@ class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
     form_class = ChangePasswordForm
     context_object_name = "form"
     success_url = reverse_lazy("useraccount:edit_profile")
+
+User = get_user_model()
+        
+        

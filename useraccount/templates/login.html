@@ -11,6 +11,10 @@
       method="POST"
     >
       {% csrf_token %}
+
+      {% if form.errors %}
+        <p class="error-message text-red-500">Invalid credentials. Please try again.</p>
+    {% endif %}
       <p class="text-center text-lg font-medium">Sign in to your account</p>
 
       <div>

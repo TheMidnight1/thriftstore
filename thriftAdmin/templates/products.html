@@ -1,0 +1,57 @@
+{% extends 'admin_sidebar.html' %}
+
+{% block maincontent %}
+
+<div class="bg-white rounded-md shadow-lg p-6 mx-auto max-w-7xl">
+    <h1>Products</h1>
+    <div class="mt-4 flex items-center justify-end">
+        <form method="GET" action="{% url 'thriftAdmin:products' %}">
+            <div class="relative flex items-center w-full">
+                <input type="text" name="search" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" placeholder="Search products...">
+                <button type="submit" class="absolute right-0 top-0 mt-2 mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l4-4m0 0l-4-4m4 4H9m12 4a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="flex-grow py-8 px-10">
+        <h1 class="text-2xl font-semibold mb-6">User List</h1>
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-3 text-left bg-gray-100">Product id</th>
+                        <th class="px-4 py-3 text-left bg-gray-100">Name</th>
+                        <th class="px-4 py-3 text-left bg-gray-100">Price</th>
+                        <th class="px-4 py-3 text-left bg-gray-100">Quantity</th>
+                        <th class="px-4 py-3 text-left bg-gray-100">Posted By</th>
+                        <th class="px-4 py-3 text-left bg-gray-100">Delete</th>
+
+                        
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr class="transition duration-200 ease-in-out hover:bg-gray-50 transform hover:-translate-y-1 hover:scale-105 hover:shadow-md cursor-pointer">
+                        <td class="border-t px-4 py-3">{{ product.id }}</td>
+                        <td class="border-t px-4 py-3">{{ product.name }}</td>
+                        <td class="border-t px-4 py-3">{{ product.price }}</td>
+                        <td class="border-t px-4 py-3">{{ product.quantity }}</td>
+                        <td class="border-t px-4 py-3">{{ product.user }}</td>
+                        <td class="border-t px-4 py-3">
+                            <a href="">Delete</a>
+                        </td>
+
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</div>
+
+{% endblock maincontent %}
