@@ -14,7 +14,7 @@ from django.db.models import Q
 from django.conf import settings
 from django.contrib import messages
 from .models import Product, Comment
-from django.http import JsonResponse,HttpResponse
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from payment.models import UserPayment
 from categories.models import Category
@@ -23,6 +23,7 @@ from django.views.generic import ListView
 from .models import FeatureVector, Product
 import torchvision.transforms as transforms
 from sklearn.metrics.pairwise import cosine_similarity
+from .decorators import user_required, superuser_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView
@@ -85,7 +86,8 @@ class HomepageView(ListView):
         context["search_term"] = search_term
         return context
     
-    
+
+
 class PostProduct(LoginRequiredMixin, CreateView):
     model = Product
     fields = [
@@ -161,7 +163,7 @@ def recommend_similar_products(clicked_product_id, top_n=4):
     return top_similar_products
 
 
-@login_required
+@user_required
 def product_detail(request, pk):
     pk = pk
     start_time = time.time()

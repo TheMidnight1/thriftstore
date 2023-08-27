@@ -43,7 +43,7 @@
                         <td class="border-t px-4 py-3">{{ product.quantity }}</td>
                         <td class="border-t px-4 py-3">{{ product.user }}</td>
                         <td class="border-t px-4 py-3">
-                            <a href="">Delete</a>
+                            <a href="{%url 'thriftAdmin:deleteproduct' pk=product.pk%}" > <button class="bg-red-600 px-3 py-2 rounded-lg text-white hover:bg-red-700 ">Delete</button></a>
                         </td>
 
 

@@ -28,7 +28,11 @@
               <td class="border-t px-4 py-3">{{ user.email }}</td>
               <td class="border-t px-4 py-3">{{ user.phone_number }}</td>
 
-              <td class="border-t px-4 py-3">Edit/Delete</td>
+              <td class="border-t px-4 py-3 flex gap-4">
+                <a href="{%url 'thriftAdmin:deleteuser' pk=user.pk%}"><button class="block rounded-md bg-red-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-red-700">Delete</button></a>
+                <a href=""><button class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700">Update</button></a>
+
+            </td>
 
 
             </tr>

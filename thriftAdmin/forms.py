@@ -1,5 +1,6 @@
 from django import forms
 from useraccount.models import User
+from categories.models import Category,Condition
 from django.contrib.auth.forms import AuthenticationForm
 
 
@@ -23,3 +24,13 @@ class LoginForm(AuthenticationForm):
             }
         ),
     )
+
+class ConditionForm(forms.ModelForm):
+    class Meta:
+        model = Condition
+        fields = ['name']
+        
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']

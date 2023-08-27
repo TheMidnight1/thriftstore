@@ -4,7 +4,7 @@
 
 <div class="bg-white rounded-md shadow-lg p-6 mx-auto max-w-7xl">
     <h1>Conditions</h1>
-
+    <a href="{%url 'thriftAdmin:addconditions'%}">Add product</a>
     <div class="flex-grow py-8 px-10">
         <h1 class="text-2xl font-semibold mb-6">User List</h1>
         <div class="overflow-x-auto">
@@ -15,7 +15,7 @@
                         <th class="px-4 py-3 text-left bg-gray-100">Name</th>
                         <th class="px-4 py-3 text-left bg-gray-100">Created at</th>
                         <th class="px-4 py-3 text-left bg-gray-100">Updated at</th>  
-                        <th class="px-4 py-3 text-left bg-gray-100">Edit/Delete</th>  
+                        <th class="px-4 py-3 text-left bg-gray-100">Edit</th>  
 
                                               
                     </tr>
@@ -28,9 +28,8 @@
                         <td class="border-t px-4 py-3">{{ condition.created_at }}</td>
                         <td class="border-t px-4 py-3">{{ condition.updated_at }}</td>
 
-                        <td class="border-t px-4 py-3">
-                            <a href="">Delete</a>
-                            <a href="">Update</a>
+                        <td class="border-t px-4 py-3 flex gap-4">
+                            <a href="{%url 'thriftAdmin:editcondition' pk=condition.pk%}"><button class="block rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700">Update</button></a>
 
                         </td>
 

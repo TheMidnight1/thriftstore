@@ -157,6 +157,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Default Django authentication backend
 ]
 
+LOGIN_URL = '/login/'
 LOGOUT_URL = "logout"
 
 INTERNAL_IPS = [

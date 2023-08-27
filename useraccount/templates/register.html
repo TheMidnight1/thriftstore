@@ -1,9 +1,27 @@
-{% extends 'base_site.html' %} {% block maincontent %}
+{% extends 'base_site.html' %}
 
-<div class="container">
-  <form action="" method="post">
-    {% csrf_token %} {{form.as_p}}
-    <input type="submit" value="submit" />
+{% block maincontent %}
+
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+  <form action="" method="post" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 grid grid-cols-2 gap-4" data-aos="fade-up" data-aos-duration="1000">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="space-y-1">
+        <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+          <p class="text-red-500 text-sm mt-1">{{ field.errors.as_text }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors duration-300">
   </form>
 </div>
+
 {% endblock maincontent %}
+
+<!-- Add the following script at the end of your base_site.html template, just before the closing </body> tag -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>

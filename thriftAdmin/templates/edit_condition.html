@@ -1,0 +1,16 @@
+{% extends 'admin_sidebar.html' %}
+
+{% block maincontent %}
+
+<div class="bg-white rounded-md shadow-lg p-6 mx-auto max-w-6xl">
+    <div class="flex-grow py-8 px-10">
+<!-- edit_condition.html -->
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="submit">
+</form>
+
+    </div>
+</div>
+{% endblock maincontent %}
